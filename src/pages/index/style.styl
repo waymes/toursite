@@ -1,0 +1,89 @@
+@import '../../styles/variables.styl'
+
+.homepage
+  &__logo
+    color greenyellow
+    font-size 25px
+    font-weight bold
+    span 
+      color coral
+  &__subscriptionForm
+    display flex
+    justify-content center
+    flex-wrap wrap
+    .button
+      color #fff
+    .button, .input
+      width 100%
+      margin 0 20px 20px
+      @media screen and (min-width: 495px) {
+        width 200px
+      }
+  &__title
+    margin-bottom 50px
+    color coral
+    font-size titleFontSize
+    font-weight bold
+    text-align center
+    &_secondary
+      color green
+  &__section1
+    background-image url(/static/background.jpg)
+    background-position center 
+    background-size cover
+    height 100vh
+    min-height max-content
+    header 
+      display flex
+      justify-content space-between
+      align-items center
+      padding-top 4vh
+      padding-bottom 4vh
+    nav ul
+      list-style-type none 
+      padding-left 0
+      margin-bottom 0
+      li
+        display inline-block
+        margin-left 20px
+        a
+          color #fff
+          text-decoration none
+  &__section2
+    padding-top 8vh
+    padding-bottom 8vh
+    figure
+      padding 0 30px
+      img 
+        width 100%
+        height auto
+      figcaption 
+        padding 15px 0
+        text-align center
+  &__section3
+    ol
+      list-style-type none
+      padding 0
+      margin 0
+      max-width 700px
+      margin 0 auto
+      .fact
+        display flex
+        margin-bottom 40px
+        &__number
+          width 40px
+          height 40px
+          border 2px solid blue
+          border-radius 50%
+          flex-shrink 0
+          text-align center
+          line-height 38px
+          margin-right 30px
+          color blue
+        &__title
+          font-size fontSize
+          font-weight bold
+        &__details
+          margin-bottom 0
+  &__section4
+    padding 8vh 0
