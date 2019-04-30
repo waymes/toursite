@@ -1,10 +1,10 @@
 export const tempAdventures = [
-  { title: 'Путешествие в Персию', img: '/static/background.jpg' },
-  { title: 'Путешествие в Персию', img: '/static/background.jpg' },
-  { title: 'Путешествие в Персию', img: '/static/background.jpg' },
-  { title: 'Путешествие в Персию', img: '/static/background.jpg' },
-  { title: 'Путешествие в Персию', img: '/static/background.jpg' },
-  { title: 'Путешествие в Персию', img: '/static/background.jpg' },
+  { id: 1, title: 'Путешествие в Персию', img: '/static/background_1.jpg' },
+  { id: 2, title: 'Путешествие в Иран', img: '/static/background_2.jpg' },
+  { id: 3, title: 'Путешествие в Грузию', img: '/static/background_3.jpg' },
+  { id: 4, title: 'Путешествие в Стамбул', img: '/static/background_4.jpg' },
+  { id: 5, title: 'Путешествие в Королевскую Гавань', img: '/static/background_5.jpg' },
+  { id: 6, title: 'Путешествие в Винтерфелл', img: '/static/background_1.jpg' },
 ];
 
 export const factList = [
@@ -43,4 +43,12 @@ export const factList = [
       взглянуть на себя в мире по-новому, а Дейнерис следить, чтобы в этих авантюрах
       тебе было тепло, сытно, хорошо и безопасно.`,
   },
+];
+
+export const slideList = [
+  { url: '/static/background_1.jpg' },
+  { url: '/static/background_2.jpg' },
+  { url: '/static/background_3.jpg' },
+  { url: '/static/background_4.jpg' },
+  { url: '/static/background_5.jpg' },
 ];

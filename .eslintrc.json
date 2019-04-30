@@ -8,6 +8,7 @@
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -19,6 +20,7 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react/react-in-jsx-scope": 0,
-    "react/button-has-type": 0
+    "react/button-has-type": 0,
+    "class-methods-use-this": 0
   }
 }
