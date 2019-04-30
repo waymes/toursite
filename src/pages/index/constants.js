@@ -1,10 +1,10 @@
 export const tempAdventures = [
-  { id: 1, title: 'Путешествие в Персию', img: '/static/background_1.jpg' },
-  { id: 2, title: 'Путешествие в Иран', img: '/static/background_2.jpg' },
-  { id: 3, title: 'Путешествие в Грузию', img: '/static/background_3.jpg' },
-  { id: 4, title: 'Путешествие в Стамбул', img: '/static/background_4.jpg' },
-  { id: 5, title: 'Путешествие в Королевскую Гавань', img: '/static/background_5.jpg' },
-  { id: 6, title: 'Путешествие в Винтерфелл', img: '/static/background_1.jpg' },
+  { id: 1, title: 'Персия', img: '/static/background_1.jpg' },
+  { id: 2, title: 'Грузия', img: '/static/background_2.jpg' },
+  { id: 3, title: 'Иран', img: '/static/background_3.jpg' },
+  { id: 4, title: 'Стамбул', img: '/static/background_4.jpg' },
+  { id: 5, title: 'Королевская Гавань', img: '/static/background_5.jpg' },
+  { id: 6, title: 'Винтерфелл', img: '/static/background_1.jpg' },
 ];
 
 export const factList = [

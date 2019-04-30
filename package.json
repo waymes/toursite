@@ -21,8 +21,10 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.2",
+    "react-slick": "^0.24.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
+    "slick-carousel": "^1.8.1",
     "stylus": "^0.54.5"
   },
   "devDependencies": {

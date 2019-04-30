@@ -5,9 +5,10 @@ import Input from '../../components/common/input';
 import Button from '../../components/common/button';
 import EButton from '../../components/common/element-button';
 import Link from '../../components/common/link';
-import Slider from './components/slider';
+import HeaderSlider from './components/header-slider';
+import TourSlider from './components/tour-slider';
 
-import { tempAdventures, factList } from './constants';
+import { factList } from './constants';
 
 import './style.styl';
 
@@ -57,7 +58,7 @@ class Home extends PureComponent {
     return (
       <GeneralLayout className="homepage">
         <section className="homepage__section1">
-          <Slider />
+          <HeaderSlider />
           <div className="background__content">
             <div className="homepage__headerHolder">
               <header className="container">
@@ -69,7 +70,7 @@ class Home extends PureComponent {
               </header>
             </div>
             <div className="container">
-              <h1 className="homepage__moto">Живи. Люби. Путешествуй.</h1>
+              <h1 className="homepage__moto">Живи. Люби. Путешествуй...</h1>
             </div>
             <div className="homepage__scrolldown" onMouseEnter={this.scrollToTours}>
               <i />
@@ -80,12 +81,7 @@ class Home extends PureComponent {
         <section className="homepage__section2 container" ref={this.toursRef}>
           <h2 className="homepage__title">Выбери приключение:</h2>
           <div className="homepage__adventures">
-            {tempAdventures.map(adventure => (
-              <figure key={adventure.id} draggable>
-                <img src={adventure.img} alt={adventure.title} />
-                <figcaption>{adventure.title}</figcaption>
-              </figure>
-            ))}
+            <TourSlider />
           </div>
         </section>
         <section className="homepage__section3 container">
