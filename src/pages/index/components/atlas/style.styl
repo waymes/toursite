@@ -1,8 +1,24 @@
 @import '../../../../styles/variables.styl'
 
+color1 = #17A768
+color2 = #F1601D
+color3 = #F1AD1D
+color4 = #E7E0D2
+color5 = #BBAE93
+color6 = #F3E761
+color7 = #F0F0F0
+color8 = #97C2B9
+color9 = #E9ABC7
+color10 = #CAA882
+
+@keyframes fadeOut {
+  from { opacity: 1 }
+  to { opacity: 0 }
+}
+
 .atlas
   position relative
-  padding 60px 0
+  padding 40px 0
   &::before
     content ''
     position absolute 
@@ -17,6 +33,7 @@
     opacity 0.5
   
   &__facts
+    pointer-events none
     .fact
       position absolute
       width 300px
@@ -24,37 +41,48 @@
       background lightblue
       padding 20px 30px
       box-sizing border-box
-      border 1px solid blue
+      &_fadeOut
+        animation fadeOut 1s linear 0s 1
       &_0
         top -45px
         left 15%
+        background-color color1
       &_1
         top 50px
         left 20%
+        background-color color2
       &_2
         top 35px
         left 47%
+        background-color color3
       &_3
         top 120px
         left 35%
+        background-color color4
       &_4
         top -15px
         left 55%
+        background-color color5
       &_5
         top 165px
         left 17%
+        background-color color6
       &_6
         top 13px
         left 36%
+        background-color color7
       &_7
         top 140px
         left 50%
+        background-color color8
       &_8
         top 64px
         left 22%
+        background-color color9
       &_9
         top 30px
         left 25%
+        background-color color10
 
   &__hovers
     max-width 400px
@@ -62,7 +90,6 @@
     padding-top 1px
     padding-left 5px
     position relative
-    z-index 50
   &__hoverItem
     display inline-block
     vertical-align top
@@ -73,6 +100,7 @@
     box-sizing border-box
     margin-left -1px
     margin-top -1px
+    cursor default
     &:last-child
       &:hover
         background-color transparent
@@ -91,7 +119,7 @@
         right -22%
         transform rotate(-45deg)
     &:hover
-      background-color rgba(0,0,0,0.6)
+      background-color rgba(0,0,0,0.7)
       span 
         color colorWhite
         

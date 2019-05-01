@@ -11,7 +11,7 @@ class Atlas extends Component {
       activeFactIds: [],
       activeFactDeleteTimouts: {},
     };
-    this.FACT_TIMEOUT = 3000;
+    this.FACT_TIMEOUT = 1000;
   }
 
   componentWillUnmount() {
@@ -21,37 +21,45 @@ class Atlas extends Component {
       .forEach(timeout => clearTimeout(timeout));
   }
 
-  addActiveFact = factId => () => {
+  addActiveFact = idToAdd => () => {
     const { activeFactIds, activeFactDeleteTimouts } = this.state;
 
-    if (activeFactIds.includes(factId)) {
-      clearTimeout(activeFactDeleteTimouts[factId]);
+    if (activeFactIds.includes(idToAdd)) {
+      clearTimeout(activeFactDeleteTimouts[idToAdd]);
       this.setState({
         activeFactIds: [
-          ...activeFactIds.filter(id => id !== factId),
-          factId,
+          ...activeFactIds.filter(id => id !== idToAdd),
+          idToAdd,
         ],
-        activeFactDeleteTimouts: {
-          ...activeFactDeleteTimouts,
-          [factId]: setTimeout(this.removeActiveFact(factId), this.FACT_TIMEOUT),
-        },
       });
       return;
     }
 
+    this.setState({ activeFactIds: [...activeFactIds, idToAdd] });
+  }
+
+  addRemoveTimout = id => () => {
+    const { activeFactIds, activeFactDeleteTimouts } = this.state;
+
+    if (!activeFactIds.includes(id)) {
+      return;
+    }
+
+    clearTimeout(activeFactDeleteTimouts[id]);
     this.setState({
-      activeFactIds: [...activeFactIds, factId],
       activeFactDeleteTimouts: {
         ...activeFactDeleteTimouts,
-        [factId]: setTimeout(this.removeActiveFact(factId), this.FACT_TIMEOUT),
+        [id]: setTimeout(this.removeActiveFact(id), this.FACT_TIMEOUT),
       },
     });
   }
 
-  removeActiveFact = factId => () => {
+  removeActiveFact = idToRemove => () => {
     const { activeFactIds } = this.state;
 
-    this.setState({ activeFactIds: activeFactIds.filter(id => id !== factId) });
+    this.setState({
+      activeFactIds: activeFactIds.filter(id => id !== idToRemove),
+    });
   }
 
   removeAllActiveFacts = () => {
@@ -67,7 +75,7 @@ class Atlas extends Component {
 
     return (
       <div className={`fact fact_${factId}`} style={{ zIndex: key + 30 }}>
-        {fact.title}
+        <strong>{fact.title}</strong>
         <br />
         {fact.details}
       </div>
@@ -81,6 +89,7 @@ class Atlas extends Component {
           <div
             className="atlas__hoverItem"
             onMouseEnter={this.addActiveFact(id)}
+            onMouseLeave={this.addRemoveTimout(id)}
             // eslint-disable-next-line react/no-array-index-key
             key={id}
           >
@@ -95,7 +104,6 @@ class Atlas extends Component {
   render() {
     const { activeFactIds } = this.state;
 
-    console.log(activeFactIds)
     return (
       <div className="atlas">
         <div className="atlas__facts">
