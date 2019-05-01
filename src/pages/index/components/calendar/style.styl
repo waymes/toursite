@@ -1,0 +1,37 @@
+@import '../../../../styles/variables.styl'
+
+.calendar-table
+  margin 80px auto 0
+  font-size fontSizeXS
+  border-collapse collapse
+  &__head
+    th
+      text-align left
+      padding 10px 15px
+      color rgba(0,0,0,0.6)
+      font-weight normal
+      &:last-child
+        text-align right
+  &__row
+    &:hover
+      background-color #eee
+      .link
+        text-decoration underline
+    td
+      border-top 1px solid #ddd
+      text-align right
+      padding 10px 15px
+      max-width 250px
+      &:first-child, &:nth-child(2)
+        text-align left
+      .icon
+        padding 5px
+        &_full
+          color colorBlack
+        &_empty
+          color #ccc
+      .link
+        text-decoration none
+        color colorBlack
+        &:hover
+          color rgba(0,0,0,0.6)

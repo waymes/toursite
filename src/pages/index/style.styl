@@ -1,7 +1,7 @@
 @import '../../styles/variables.styl'
 
 @keyframes blink {
-  0%, 45% {opacity: 0}
+  0%, 45% {opacity: 0.4}
   50, 100% {opacity: 1}
 }
 .homepage
@@ -82,10 +82,10 @@
           transform rotate(45deg)
           transform-origin 50% 50%
           left 9px
-          animation blink 1.4s linear 0s infinite alternate
+          animation blink 1.2s linear 0s infinite alternate
           &:nth-child(2)
             top 35px
-            animation blink 1.4s linear .3s infinite alternate
+            animation blink 1.2s linear .3s infinite alternate
       &__headerHolder
         padding 0 15px
         background-image linear-gradient(rgba(0, 0, 0, 0.4), transparent)
@@ -134,6 +134,8 @@
         &__details
           margin-bottom 0
   &__section4
+    padding 7vh 0 4vh
+  &__section5
     padding 8vh 0
     .homepage__subscriptionForm
       display flex

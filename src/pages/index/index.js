@@ -8,6 +8,7 @@ import Link from '../../components/common/link';
 import HeaderSlider from './components/header-slider';
 import TourSlider from './components/tour-slider';
 import Atlas from './components/atlas';
+import Calendar from './components/calendar';
 
 import './style.styl';
 
@@ -16,6 +17,7 @@ class Home extends PureComponent {
     super(props);
     this.toursRef = React.createRef();
     this.subscribeFormRef = React.createRef();
+    this.calendarRef = React.createRef();
   }
 
   scrollIntoView = (ref) => {
@@ -26,6 +28,10 @@ class Home extends PureComponent {
 
   scrollToTours = () => {
     this.scrollIntoView(this.toursRef.current);
+  }
+
+  scrollToCalendar = () => {
+    this.scrollIntoView(this.calendarRef.current);
   }
 
   scrollToSubscribeForm = () => {
@@ -41,7 +47,11 @@ class Home extends PureComponent {
               Путешествия
             </EButton>
           </li>
-          <li><Link href="/calendar">Календарь</Link></li>
+          <li>
+            <EButton className="link" onClick={this.scrollToCalendar}>
+              Календарь
+            </EButton>
+          </li>
           <li><Link href="/about">О нас</Link></li>
           <li>
             <EButton className="menulist__subscribeButton" onClick={this.scrollToSubscribeForm}>
@@ -85,7 +95,11 @@ class Home extends PureComponent {
           <h2 className="homepage__title">10 фактов:</h2>
           <Atlas />
         </section>
-        <section className="homepage__section4" ref={this.subscribeFormRef}>
+        <section className="homepage__section4 container" ref={this.calendarRef}>
+          <h2 className="homepage__title">Календарь туров:</h2>
+          <Calendar />
+        </section>
+        <section className="homepage__section5" ref={this.subscribeFormRef}>
           <h2 className="homepage__title homepage__title_secondary">
             Новые приключения - в Вашем почтовом ящике:
           </h2>
