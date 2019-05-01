@@ -7,8 +7,7 @@ import EButton from '../../components/common/element-button';
 import Link from '../../components/common/link';
 import HeaderSlider from './components/header-slider';
 import TourSlider from './components/tour-slider';
-
-import { factList } from './constants';
+import Atlas from './components/atlas';
 
 import './style.styl';
 
@@ -80,23 +79,11 @@ class Home extends PureComponent {
         </section>
         <section className="homepage__section2 container" ref={this.toursRef}>
           <h2 className="homepage__title">Выбери приключение:</h2>
-          <div className="homepage__adventures">
-            <TourSlider />
-          </div>
+          <TourSlider />
         </section>
         <section className="homepage__section3 container">
           <h2 className="homepage__title">10 фактов:</h2>
-          <ol>
-            {factList.map((fact, id) => (
-              <li className="fact" key={fact.title}>
-                <div className="fact__number">{id + 1}</div>
-                <div>
-                  <h4 className="fact__title">{fact.title}</h4>
-                  <p className="fact__details">{fact.details}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <Atlas />
         </section>
         <section className="homepage__section4" ref={this.subscribeFormRef}>
           <h2 className="homepage__title homepage__title_secondary">
