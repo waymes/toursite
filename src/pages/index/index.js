@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
 
 import GeneralLayout from '../../layouts/general';
-import Input from '../../components/common/input';
-import Button from '../../components/common/button';
 import EButton from '../../components/common/element-button';
 import Link from '../../components/common/link';
 import HeaderSlider from './components/header-slider';
 import TourSlider from './components/tour-slider';
 import Atlas from './components/atlas';
 import Calendar from './components/calendar';
+import SubscribeForm from './components/subscribe-form';
 
 import './style.styl';
 
@@ -100,14 +99,8 @@ class Home extends PureComponent {
           <Calendar />
         </section>
         <section className="homepage__section5" ref={this.subscribeFormRef}>
-          <h2 className="homepage__title homepage__title_secondary">
-            Новые приключения - в Вашем почтовом ящике:
-          </h2>
-          <form className="homepage__subscriptionForm">
-            <Input placeholder="Ваше имя" />
-            <Input placeholder="Ваше e-mail" />
-            <Button type="submit">Подписаться</Button>
-          </form>
+          <h2 className="homepage__title">Новые приключения - в Вашем почтовом ящике:</h2>
+          <SubscribeForm />
         </section>
       </GeneralLayout>
     );
