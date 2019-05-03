@@ -13,9 +13,11 @@
     cursor pointer
     &:hover
       .tour-slide__inner
-        transform scale(1.03)
-        z-index 19
-        box-shadow 0 28px 81px -7px rgba(0,0,0, 0.44)
+        @media screen and (min-width mediumWidth) {
+          transform scale(1.03)
+          z-index 19
+          box-shadow 0 28px 81px -7px rgba(0,0,0, 0.44)
+        }
     &__inner
       background-position center 
       background-size cover

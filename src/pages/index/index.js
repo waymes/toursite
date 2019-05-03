@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 
 import GeneralLayout from '../../layouts/general';
-import EButton from '../../components/common/element-button';
-import Link from '../../components/common/link';
+import Header from './components/header';
 import HeaderSlider from './components/header-slider';
 import TourSlider from './components/tour-slider';
 import Atlas from './components/atlas';
 import Calendar from './components/calendar';
 import SubscribeForm from './components/subscribe-form';
+import EButton from '../../components/common/element-button';
 
 import './style.styl';
 
@@ -15,8 +15,8 @@ class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.toursRef = React.createRef();
-    this.subscribeFormRef = React.createRef();
     this.calendarRef = React.createRef();
+    this.subscribeFormRef = React.createRef();
   }
 
   scrollIntoView = (ref) => {
@@ -37,31 +37,6 @@ class Home extends PureComponent {
     this.scrollIntoView(this.subscribeFormRef.current);
   }
 
-  renderMenu() {
-    return (
-      <nav className="homepage__menu">
-        <ul className="menulist">
-          <li>
-            <EButton className="link" onClick={this.scrollToTours}>
-              Путешествия
-            </EButton>
-          </li>
-          <li>
-            <EButton className="link" onClick={this.scrollToCalendar}>
-              Календарь
-            </EButton>
-          </li>
-          <li><Link href="/about">О нас</Link></li>
-          <li>
-            <EButton className="menulist__subscribeButton" onClick={this.scrollToSubscribeForm}>
-              Подписаться
-            </EButton>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
-
   render() {
     return (
       <GeneralLayout className="homepage">
@@ -69,21 +44,18 @@ class Home extends PureComponent {
           <HeaderSlider />
           <div className="background__content">
             <div className="homepage__headerHolder">
-              <header className="container">
-                <Link href="/" className="homepage__logo">
-                  Trip
-                  <span>Adventure</span>
-                </Link>
-                {this.renderMenu()}
-              </header>
+              <Header
+                scrollToTours={this.scrollToTours}
+                scrollToCalendar={this.scrollToCalendar}
+                scrollToSubscribeForm={this.scrollToSubscribeForm}
+              />
             </div>
-            <div className="container">
-              <h1 className="homepage__moto">Живи. Люби. Путешествуй...</h1>
-            </div>
-            <div className="homepage__scrolldown" onMouseEnter={this.scrollToTours}>
-              <i />
-              <i />
-            </div>
+            <h1 className="homepage__moto">Живи. Люби. Путешествуй...</h1>
+            <EButton
+              className="homepage__scrolldown"
+              onMouseEnter={this.scrollToTours}
+              onClick={this.scrollToTours}
+            />
           </div>
         </section>
         <section className="homepage__section2 container" ref={this.toursRef}>

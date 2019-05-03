@@ -74,7 +74,7 @@ class Atlas extends Component {
     const fact = factList[factId];
 
     return (
-      <div className={`fact fact_${factId}`} style={{ zIndex: key + 30 }}>
+      <div className={`fact fact_${factId}`} style={{ zIndex: key + 30 }} key={key}>
         <strong>{fact.title}</strong>
         <br />
         {fact.details}

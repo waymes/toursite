@@ -1,15 +1,32 @@
-import Slider from 'react-slick';
+import dynamic from 'next/dynamic';
+
+import withSizes from '../../../../helpers/sizes';
 
 import { tempAdventures } from '../../constants';
 
 import './style.styl';
 
-const TourSlider = () => (
+const Slider = dynamic(import('react-slick'), { ssr: false });
+
+const chooseSlidesAmount = ({ isMobile, isTablet, isDesktop }) => {
+  if (isMobile) {
+    return 1;
+  }
+  if (isTablet) {
+    return 2;
+  }
+  if (isDesktop) {
+    return 3;
+  }
+  return 4;
+};
+
+const TourSlider = props => (
   <Slider
     arrows
     speed={500}
-    slidesToShow={4}
-    slidesToScroll={4}
+    slidesToShow={chooseSlidesAmount(props)}
+    slidesToScroll={chooseSlidesAmount(props)}
     className="tour-slider"
   >
     {tempAdventures.map(adventure => (
@@ -28,4 +45,8 @@ const TourSlider = () => (
   </Slider>
 );
 
-export default TourSlider;
+export default withSizes({
+  withMobile: true,
+  withTablet: true,
+  withDesktop: true,
+})(TourSlider);

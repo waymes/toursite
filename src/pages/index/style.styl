@@ -6,7 +6,7 @@
 }
 .homepage
   &__title
-    margin-bottom 50px
+    margin-bottom 0
     margin-top 0
     font-size titleFontSize
     font-weight bold
@@ -24,87 +24,40 @@
       flex-direction column
       justify-content space-between
     .homepage
-      &__menu
-        .menulist
-          list-style-type none 
-          padding-left 0
-          margin 0
-          &__subscribeButton
-            color colorWhite
-            color colorWhite
-            font-size fontSizeS
-            font-weight 300
-            letter-spacing -.5px
-            border 1px solid colorWhite
-            border-radius 17px
-            padding 5px 10px 6px
-            cursor pointer
-            transition all .4s
-            background-color transparent
-            border-color rgba(255, 255, 255, 0.6)
-            outline none
-            &:hover, &:focus
-              background-color hsla(0,0%,100%,.1)
-              border-color hsla(0,0%,100%,.38)
-          li
-            display inline-block
-            margin-left 20px
-            .link
-              color colorWhite
-              font-size fontSizeS
-              font-weight 400
-              letter-spacing -.5px
-              text-decoration none
-              transition 0.4s
-              cursor pointer
-              &:hover
-                color hsla(0,0%,100%,.6)
-      &__logo
-        color greenyellow
-        font-size 25px
-        font-weight 700
-        text-shadow 1px 1px colorBlack
-        text-decoration none
-        span 
-          color coral
       &__scrolldown
         width 60px
         margin 0 auto 15vh
         padding 10px 0
         outline none
         position relative
-        i
+        &::before, &::after
+          content ''
           position absolute
           display inline-block
           width 40px
           height 40px
-          border-right 1px solid colorWhite
-          border-bottom 1px solid colorWhite
+          border-right borderWhite
+          border-bottom borderWhite
           transform rotate(45deg)
           transform-origin 50% 50%
           left 9px
           animation blink 1.2s linear 0s infinite alternate
-          &:nth-child(2)
-            top 35px
-            animation blink 1.2s linear .3s infinite alternate
+        &::after
+          top 35px
+          animation blink 1.2s linear .3s infinite alternate
       &__headerHolder
         padding 0 15px
         background-image linear-gradient(rgba(0, 0, 0, 0.4), transparent)
-        header 
-          display flex
-          justify-content space-between
-          align-items center
-          padding-top 4vh
-          padding-bottom 4vh
-          border-bottom 1px solid rgba(255, 255, 255, 0.2)
-          box-sizing border-box
       &__moto
         color colorWhite
         font-family fontFamilyCursive
         font-size 50px
         text-shadow 1px 1px #555
+        text-align center
+        padding 15px
   &__section2
     padding-top 65px
+    min-height 600px
     .homepage__title
       margin-bottom 0
   &__section3
@@ -138,3 +91,5 @@
     padding 7vh 0 4vh
   &__section5
     padding 8vh 0 10vh
+    .homepage__title
+      padding 0 15px

@@ -20,12 +20,8 @@ color10 = #CAA882
   position relative
   padding 40px 0
   &::before
+    absoluteFitParent()
     content ''
-    position absolute 
-    top 0
-    left 0
-    right 0
-    bottom 0
     background-image url('/static/atlas_0.jpg')
     background-size 300px 200px
     background-repeat no-repeat
@@ -119,7 +115,7 @@ color10 = #CAA882
         right -22%
         transform rotate(-45deg)
     &:hover
-      background-color rgba(0,0,0,0.7)
+      background-color colorDark
       span 
         color colorWhite
         
