@@ -4,9 +4,9 @@
   "description": "Tour website",
   "main": "index.js",
   "scripts": {
-    "dev": "next src",
-    "build": "next build src",
-    "start": "next start src -p $PORT",
+    "dev": "node src/server",
+    "build": "next build src/server",
+    "start": "NODE_ENV=production node src/server -p $PORT",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "heroku-postbuild": "npm run build"
@@ -16,6 +16,7 @@
   "dependencies": {
     "@zeit/next-stylus": "^1.0.1",
     "bootstrap": "^4.3.1",
+    "express": "^4.16.4",
     "next": "^8.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

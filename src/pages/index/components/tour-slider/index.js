@@ -1,4 +1,7 @@
 import dynamic from 'next/dynamic';
+import Router from 'next/router';
+
+import EButton from '../../../../components/common/element-button';
 
 import withSizes from '../../../../helpers/sizes';
 
@@ -30,7 +33,11 @@ const TourSlider = props => (
     className="tour-slider"
   >
     {tempAdventures.map(adventure => (
-      <div className="tour-slide" key={adventure.id}>
+      <EButton
+        className="tour-slide"
+        key={adventure.id}
+        onClick={() => Router.push(`/tour?id=${adventure.id}`)}
+      >
         <div
           className="tour-slide__inner"
           style={{ backgroundImage: `url(${adventure.img})` }}
@@ -40,7 +47,7 @@ const TourSlider = props => (
             <div className="tour-slide__description">Даты: 12.06 ‒ 23.06</div>
           </div>
         </div>
-      </div>
+      </EButton>
     ))}
   </Slider>
 );
