@@ -1,4 +1,4 @@
-import Link from '../../components/common/link';
+import Link from '../../../components/common/link';
 
 import './style.styl';
 

@@ -1,4 +1,4 @@
-@import '../../../../styles/variables.styl'
+@import '../../../../../styles/variables.styl'
 
 menuOpen()
   position fixed
@@ -10,7 +10,7 @@ menuOpen()
   padding-top 75px
   z-index 4
   background-color rgba(0,0,0,0.8)
-  .menulist
+  .navlist
     padding 0 15px
     &__subscribeButton
       margin-top 15px
@@ -22,7 +22,7 @@ menuOpen()
       padding 15px 0
       display block
 
-.header
+.header-menu
   display flex
   justify-content space-between
   align-items center
@@ -45,12 +45,12 @@ menuOpen()
     text-decoration none
     span 
       color coral
-  &__menu
+  &__nav
     display none
     transition background-color .2s
     @media screen and (min-width mediumWidth)
       display block
-    .menulist
+    .navlist
       list-style-type none 
       padding-left 0
       margin 0
@@ -123,6 +123,6 @@ menuOpen()
           right -4px
           width 100%
           transform rotate(135deg)
-      & + .header__menu
+      & + .header-menu__nav
         menuOpen()
   

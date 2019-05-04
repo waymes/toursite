@@ -1,14 +1,15 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 
-import Link from '../../../../components/common/link';
-import EButton from '../../../../components/common/element-button';
+import Link from '../../../../../components/common/link';
+import EButton from '../../../../../components/common/element-button';
 
-import withSizes from '../../../../helpers/sizes';
+import withSizes from '../../../../../helpers/sizes';
 
 import './style.styl';
 
-class Header extends Component {
+class HeaderMenu extends Component {
   state = { isBurgerActive: false };
 
   toggleBurger = () => {
@@ -28,8 +29,8 @@ class Header extends Component {
     } = this.props;
 
     return (
-      <nav className="header__menu">
-        <ul className="menulist">
+      <nav className="header-menu__nav">
+        <ul className="navlist">
           <li>
             <EButton className="link" onClick={scrollToTours}>
               Путешествия
@@ -42,7 +43,7 @@ class Header extends Component {
           </li>
           <li><Link href="/about">О нас</Link></li>
           <li>
-            <EButton className="menulist__subscribeButton" onClick={scrollToSubscribeForm}>
+            <EButton className="navlist__subscribeButton" onClick={scrollToSubscribeForm}>
               Подписаться
             </EButton>
           </li>
@@ -56,13 +57,13 @@ class Header extends Component {
     const { isMobile, isTablet } = this.props;
 
     const showBurger = isMobile || isTablet;
-    const burgerClasses = ['header__burger'];
+    const burgerClasses = ['header-menu__burger'];
     if (isBurgerActive) {
-      burgerClasses.push('header__burger_active');
+      burgerClasses.push('header-menu__burger_active');
     }
     return (
-      <header className="header container">
-        <Link href="/" className="header__logo">
+      <div className="header-menu container">
+        <Link href="/" className="header-menu__logo">
           Trip
           <span>Adventure</span>
         </Link>
@@ -74,22 +75,25 @@ class Header extends Component {
           </EButton>
         )}
         {this.renderMenu()}
-      </header>
+      </div>
     );
   }
 }
 
-Header.propTypes = {
-  scrollToTours: PropTypes.func.isRequired,
-  scrollToCalendar: PropTypes.func.isRequired,
-  scrollToSubscribeForm: PropTypes.func.isRequired,
+HeaderMenu.propTypes = {
+  scrollToTours: PropTypes.func,
+  scrollToCalendar: PropTypes.func,
+  scrollToSubscribeForm: PropTypes.func,
   isMobile: PropTypes.bool,
   isTablet: PropTypes.bool,
 };
 
-Header.defaultProps = {
+HeaderMenu.defaultProps = {
   isMobile: false,
   isTablet: false,
+  scrollToTours: () => Router.push('/?target=tours'),
+  scrollToCalendar: () => Router.push('/?target=calendar'),
+  scrollToSubscribeForm: () => Router.push('/?target=subscribeForm'),
 };
 
-export default withSizes({ withMobile: true, withTablet: true })(Header);
+export default withSizes({ withMobile: true, withTablet: true })(HeaderMenu);

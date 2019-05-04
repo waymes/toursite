@@ -12,55 +12,40 @@
     font-weight bold
     color colorBlack
     text-align center
-  &__section1
-    height 100vh
-    min-height max-content
+  &__scrolldown
+    width 60px
+    margin 0 auto 15vh
+    padding 10px 0
+    outline none
     position relative
-    .background__content
-      position relative
-      z-index 2
-      height 100%
-      display flex
-      flex-direction column
-      justify-content space-between
-    .homepage
-      &__scrolldown
-        width 60px
-        margin 0 auto 15vh
-        padding 10px 0
-        outline none
-        position relative
-        &::before, &::after
-          content ''
-          position absolute
-          display inline-block
-          width 40px
-          height 40px
-          border-right borderWhite
-          border-bottom borderWhite
-          transform rotate(45deg)
-          transform-origin 50% 50%
-          left 9px
-          animation blink 1.2s linear 0s infinite alternate
-        &::after
-          top 35px
-          animation blink 1.2s linear .3s infinite alternate
-      &__headerHolder
-        padding 0 15px
-        background-image linear-gradient(rgba(0, 0, 0, 0.4), transparent)
-      &__moto
-        color colorWhite
-        font-family fontFamilyCursive
-        font-size 50px
-        text-shadow 1px 1px #555
-        text-align center
-        padding 15px
-  &__section2
+    &::before, &::after
+      content ''
+      position absolute
+      display inline-block
+      width 40px
+      height 40px
+      border-right borderWhite
+      border-bottom borderWhite
+      transform rotate(45deg)
+      transform-origin 50% 50%
+      left 9px
+      animation blink 1.2s linear 0s infinite alternate
+    &::after
+      top 35px
+      animation blink 1.2s linear .3s infinite alternate
+  &__moto
+    color colorWhite
+    font-family fontFamilyCursive
+    font-size 50px
+    text-shadow 1px 1px #555
+    text-align center
+    padding 15px
+  &__section1
     padding-top 65px
     min-height 600px
     .homepage__title
       margin-bottom 0
-  &__section3
+  &__section2
     margin-top -40px
     ol
       list-style-type none
@@ -87,9 +72,9 @@
           margin-top 0
         &__details
           margin-bottom 0
-  &__section4
+  &__section3
     padding 7vh 0 4vh
-  &__section5
+  &__section4
     padding 8vh 0 10vh
     .homepage__title
       padding 0 15px

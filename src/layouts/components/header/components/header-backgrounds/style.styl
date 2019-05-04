@@ -1,0 +1,12 @@
+@import '../../../../../styles/variables.styl'
+
+.headerBackgrounds
+    absoluteFitParent()
+    &__image 
+      background-size cover
+      background-position center
+      opacity 0
+      transition opacity 1s
+      absoluteFitParent()
+      &_active
+        opacity 1

@@ -69,12 +69,12 @@ export const factList = [
   },
 ];
 
-export const slideList = [
-  { url: '/static/background_1.jpg' },
-  { url: '/static/background_2.jpg' },
-  { url: '/static/background_3.jpg' },
-  { url: '/static/background_4.jpg' },
-  { url: '/static/background_5.jpg' },
+export const backgroundUrls = [
+  '/static/background_1.jpg',
+  '/static/background_2.jpg',
+  '/static/background_3.jpg',
+  '/static/background_4.jpg',
+  '/static/background_5.jpg',
 ];
 
 export const tourList = [

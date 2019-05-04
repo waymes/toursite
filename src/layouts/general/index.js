@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-import Footer from '../footer';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 import '../../styles/main.styl';
 
-const GeneralLayout = ({ children, className, title }) => (
+const GeneralLayout = ({
+  children, className, title, headerProps,
+}) => (
   <>
     <Head>
       <title>{title}</title>
@@ -17,6 +20,7 @@ const GeneralLayout = ({ children, className, title }) => (
       />
       <link rel="icon" href="/static/favicon.ico" />
     </Head>
+    <Header {...headerProps} />
     <div className={className}>
       {children}
     </div>
@@ -28,11 +32,13 @@ GeneralLayout.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   title: PropTypes.string,
+  headerProps: PropTypes.shape({}),
 };
 
 GeneralLayout.defaultProps = {
   className: '',
   title: 'TripAdventure',
+  headerProps: {},
 };
 
 export default GeneralLayout;
