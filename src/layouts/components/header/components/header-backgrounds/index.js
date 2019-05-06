@@ -11,11 +11,17 @@ class HeaderBackgrounds extends Component {
   INTERVAL_TIME = 5000;
 
   componentDidMount() {
-    this.interval = setInterval(this.changeBackground, this.INTERVAL_TIME);
+    const { backgroundUrls } = this.props;
+
+    if (backgroundUrls.length > 1) {
+      this.interval = setInterval(this.changeBackground, this.INTERVAL_TIME);
+    }
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
 
   changeBackground = () => {

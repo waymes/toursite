@@ -7,7 +7,6 @@ import TourSlider from './components/tour-slider';
 import Atlas from './components/atlas';
 import Calendar from './components/calendar';
 import SubscribeForm from './components/subscribe-form';
-import EButton from '../../components/common/element-button';
 
 import { backgroundUrls } from './constants';
 
@@ -47,26 +46,14 @@ class Home extends PureComponent {
     this.scrollIntoView(this.subscribeFormRef.current);
   }
 
-  renderHeaderChildren() {
-    return (
-      <>
-        <h1 className="homepage__moto">Живи. Люби. Путешествуй...</h1>
-        <EButton
-          className="homepage__scrolldown"
-          onMouseEnter={this.scrollToTours}
-          onClick={this.scrollToTours}
-        />
-      </>
-    );
-  }
-
   render() {
     const headerProps = {
       backgroundUrls,
-      children: this.renderHeaderChildren(),
+      children: <h1 className="homepage__moto">Живи. Люби. Путешествуй...</h1>,
       scrollToCalendar: this.scrollToCalendar,
       scrollToSubscribeForm: this.scrollToSubscribeForm,
       scrollToTours: this.scrollToTours,
+      onScrollButtonClick: this.scrollToTours,
     };
     return (
       <GeneralLayout className="homepage" headerProps={headerProps}>

@@ -12,6 +12,15 @@ import './style.styl';
 class HeaderMenu extends Component {
   state = { isBurgerActive: false };
 
+  componentDidUpdate() {
+    const { isBurgerActive } = this.state;
+    const { isMobile, isTablet } = this.props;
+
+    if (isBurgerActive && !isMobile && !isTablet) {
+      this.toggleBurger();
+    }
+  }
+
   toggleBurger = () => {
     const { isBurgerActive } = this.state;
 
@@ -23,6 +32,13 @@ class HeaderMenu extends Component {
     this.setState({ isBurgerActive: !isBurgerActive });
   }
 
+  abuseClick = onClick => () => {
+    if (onClick) {
+      onClick();
+    }
+    this.toggleBurger();
+  }
+
   renderMenu() {
     const {
       scrollToTours, scrollToCalendar, scrollToSubscribeForm,
@@ -32,18 +48,21 @@ class HeaderMenu extends Component {
       <nav className="header-menu__nav">
         <ul className="navlist">
           <li>
-            <EButton className="link" onClick={scrollToTours}>
+            <EButton className="link" onClick={this.abuseClick(scrollToTours)}>
               Путешествия
             </EButton>
           </li>
           <li>
-            <EButton className="link" onClick={scrollToCalendar}>
+            <EButton className="link" onClick={this.abuseClick(scrollToCalendar)}>
               Календарь
             </EButton>
           </li>
           <li><Link href="/about">О нас</Link></li>
           <li>
-            <EButton className="navlist__subscribeButton" onClick={scrollToSubscribeForm}>
+            <EButton
+              className="navlist__subscribeButton"
+              onClick={this.abuseClick(scrollToSubscribeForm)}
+            >
               Подписаться
             </EButton>
           </li>
@@ -63,7 +82,7 @@ class HeaderMenu extends Component {
     }
     return (
       <div className="header-menu container">
-        <Link href="/" className="header-menu__logo">
+        <Link href="/" className="header-menu__logo" onClick={this.abuseClick}>
           Trip
           <span>Adventure</span>
         </Link>

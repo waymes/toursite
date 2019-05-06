@@ -14,7 +14,11 @@ const ElementButton = ({ onClick, children, ...other }) => (
 
 ElementButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
+};
+
+ElementButton.defaultProps = {
+  children: null,
 };
 
 export default ElementButton;

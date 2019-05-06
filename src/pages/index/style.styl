@@ -1,9 +1,5 @@
 @import '../../styles/variables.styl'
 
-@keyframes blink {
-  0%, 45% {opacity: 0.4}
-  50, 100% {opacity: 1}
-}
 .homepage
   &__title
     margin-bottom 0
@@ -12,27 +8,6 @@
     font-weight bold
     color colorBlack
     text-align center
-  &__scrolldown
-    width 60px
-    margin 0 auto 15vh
-    padding 10px 0
-    outline none
-    position relative
-    &::before, &::after
-      content ''
-      position absolute
-      display inline-block
-      width 40px
-      height 40px
-      border-right borderWhite
-      border-bottom borderWhite
-      transform rotate(45deg)
-      transform-origin 50% 50%
-      left 9px
-      animation blink 1.2s linear 0s infinite alternate
-    &::after
-      top 35px
-      animation blink 1.2s linear .3s infinite alternate
   &__moto
     color colorWhite
     font-family fontFamilyCursive
@@ -40,6 +15,8 @@
     text-shadow 1px 1px #555
     text-align center
     padding 15px
+    @media screen and (min-width 1400px)
+      font-size 70px
   &__section1
     padding-top 65px
     min-height 600px

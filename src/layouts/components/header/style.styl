@@ -1,3 +1,10 @@
+@import '../../../styles/variables.styl'
+
+@keyframes blink {
+  0%, 45% {opacity: 0.4}
+  50, 100% {opacity: 1}
+}
+
 .header
   height 100vh
   min-height max-content
@@ -12,3 +19,24 @@
   &__menuHolder
     padding 0 15px
     background-image linear-gradient(rgba(0, 0, 0, 0.4), transparent)
+  &__scrolldown
+    width 60px
+    margin 0 auto 15vh
+    padding 10px 0
+    outline none
+    position relative
+    &::before, &::after
+      content ''
+      position absolute
+      display inline-block
+      width 40px
+      height 40px
+      border-right borderWhite
+      border-bottom borderWhite
+      transform rotate(45deg)
+      transform-origin 50% 50%
+      left 9px
+      animation blink 1.2s linear 0s infinite alternate
+    &::after
+      top 35px
+      animation blink 1.2s linear .3s infinite alternate

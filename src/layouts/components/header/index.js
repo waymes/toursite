@@ -2,10 +2,13 @@ import PropTypes from 'prop-types';
 
 import HeaderMenu from './components/header-menu';
 import HeaderBackgrounds from './components/header-backgrounds';
+import EButton from '../../../components/common/element-button';
 
 import './style.styl';
 
-const Header = ({ children, backgroundUrls, ...menuOptions }) => (
+const Header = ({
+  children, backgroundUrls, onScrollButtonClick, ...menuOptions
+}) => (
   <header className="header">
     <HeaderBackgrounds backgroundUrls={backgroundUrls} />
     <div className="header__content">
@@ -13,6 +16,11 @@ const Header = ({ children, backgroundUrls, ...menuOptions }) => (
         <HeaderMenu {...menuOptions} />
       </div>
       {children}
+      <EButton
+        className="header__scrolldown"
+        onMouseEnter={onScrollButtonClick}
+        onClick={onScrollButtonClick}
+      />
     </div>
   </header>
 );
@@ -20,6 +28,7 @@ const Header = ({ children, backgroundUrls, ...menuOptions }) => (
 Header.propTypes = {
   children: PropTypes.node.isRequired,
   backgroundUrls: PropTypes.arrayOf(PropTypes.string),
+  onScrollButtonClick: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
