@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
+import scrollToTop from '../hocs/scroll-to-top';
 
 import '../../styles/main.styl';
 
@@ -41,4 +42,4 @@ GeneralLayout.defaultProps = {
   headerProps: {},
 };
 
-export default GeneralLayout;
+export default scrollToTop(GeneralLayout);
