@@ -22,7 +22,7 @@ const Calendar = () => (
         {tourList.map(tour => (
           <tr key={tour.id} className="calendar-table__row">
             <td>{tour.dates}</td>
-            <td><Link href={`/tour?id=${tour.id}`}>{tour.name}</Link></td>
+            <td><Link href={`/tour?id=${tour.id}`} as={`/tour/${tour.id}`}>{tour.name}</Link></td>
             <td>{tour.place}</td>
             <td>
               <Rating

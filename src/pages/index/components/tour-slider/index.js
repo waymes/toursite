@@ -36,7 +36,7 @@ const TourSlider = props => (
       <EButton
         className="tour-slide"
         key={adventure.id}
-        onClick={() => Router.push(`/tour?id=${adventure.id}`)}
+        onDoubleClick={() => Router.push(`/tour?id=${adventure.id}`, `/tour/${adventure.id}`)}
       >
         <div
           className="tour-slide__inner"

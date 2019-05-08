@@ -8,9 +8,9 @@ const setBlankAttributes = (blank) => {
 };
 
 const Link = ({
-  href, children, className, blank,
+  href, children, className, blank, ...other
 }) => (
-  <NextLink href={href}>
+  <NextLink href={href} {...other}>
     <a className={`link ${className}`} {...setBlankAttributes(blank)}>{children}</a>
   </NextLink>
 );

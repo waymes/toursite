@@ -3,17 +3,19 @@
 iconWidth = 35px
 
 .footer
-  padding 40px 15px
-  border-top borderLight
+  padding 0 15px
   text-align center
   @media screen and (min-width extraLargeWidth)
-    padding 20px 0
+    padding 0
   .link
     color colorBlack
     text-decoration none
     font-size fontSizeXS
     &:hover
       text-decoration underline
+  &__wrapper
+    border-top borderLighter
+    padding 40px 0
   &__contactInfo
     display flex
     flex-wrap wrap
@@ -30,6 +32,8 @@ iconWidth = 35px
       display inline-block
       margin-bottom 15px
       width max-content
+      @media screen and (min-width smallWidth)
+        margin-bottom 0
       &:first-child, &:nth-child(2)
         i
           font-size 17px

@@ -1,13 +1,7 @@
 @import '../../styles/variables.styl'
 
 .homepage
-  &__title
-    margin-bottom 0
-    margin-top 0
-    font-size titleFontSize
-    font-weight bold
-    color colorBlack
-    text-align center
+  padding 0 15px
   &__moto
     color colorWhite
     font-family fontFamilyCursive
@@ -17,41 +11,36 @@
     padding 15px
     @media screen and (min-width 1400px)
       font-size 70px
-  &__section1
-    padding-top 65px
-    min-height 600px
-    .homepage__title
-      margin-bottom 0
-  &__section2
-    margin-top -40px
-    ol
-      list-style-type none
-      padding 0
-      margin 0
-      max-width 700px
-      margin 0 auto
-      .fact
-        display flex
-        margin-bottom 40px
-        &__number
-          width 40px
-          height 40px
-          border 2px solid blue
-          border-radius 50%
-          flex-shrink 0
-          text-align center
-          line-height 38px
-          margin-right 30px
-          color blue
-        &__title
-          font-size fontSize
-          font-weight bold
-          margin-top 0
-        &__details
-          margin-bottom 0
-  &__section3
-    padding 7vh 0 4vh
-  &__section4
-    padding 8vh 0 10vh
-    .homepage__title
-      padding 0 15px
+  &__section
+    &_tourslider
+      min-height 600px
+    &_atlas
+      overflow visible
+      ol
+        list-style-type none
+        padding 0
+        margin 0
+        max-width 700px
+        margin 0 auto
+        .fact
+          display flex
+          margin-bottom 40px
+          &__number
+            width 40px
+            height 40px
+            border 2px solid blue
+            border-radius 50%
+            flex-shrink 0
+            text-align center
+            line-height 38px
+            margin-right 30px
+            color blue
+          &__details
+            margin-bottom 0
+      .title
+        margin-bottom 3vh
+    &_calendar
+      .title
+        margin-top 10vh
+    &_subscribe
+      padding-bottom 10vh

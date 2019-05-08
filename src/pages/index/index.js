@@ -1,8 +1,9 @@
-import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 
 import GeneralLayout from '../../layouts/general';
+import Title from '../../components/common/title';
+import Section from '../../components/common/section';
 import TourSlider from './components/tour-slider';
 import Atlas from './components/atlas';
 import Calendar from './components/calendar';
@@ -12,7 +13,7 @@ import { backgroundUrls } from './constants';
 
 import './style.styl';
 
-class Home extends PureComponent {
+class Home extends React.PureComponent {
   constructor(props) {
     super(props);
     this.toursRef = React.createRef();
@@ -56,23 +57,23 @@ class Home extends PureComponent {
       onScrollButtonClick: this.scrollToTours,
     };
     return (
-      <GeneralLayout className="homepage" headerProps={headerProps}>
-        <section className="homepage__section1 container" ref={this.toursRef}>
-          <h2 className="homepage__title">Выбери приключение:</h2>
+      <GeneralLayout className="homepage container" headerProps={headerProps}>
+        <Section className="homepage__section_tourslider" ref={this.toursRef}>
+          <Title>Выбери приключение:</Title>
           <TourSlider />
-        </section>
-        <section className="homepage__section2 container">
-          <h2 className="homepage__title">10 фактов:</h2>
+        </Section>
+        <Section className="homepage__section_atlas">
+          <Title>10 фактов:</Title>
           <Atlas />
-        </section>
-        <section className="homepage__section3 container" ref={this.calendarRef}>
-          <h2 className="homepage__title">Календарь туров:</h2>
+        </Section>
+        <Section className="homepage__section_calendar" ref={this.calendarRef}>
+          <Title>Календарь туров:</Title>
           <Calendar />
-        </section>
-        <section className="homepage__section4" ref={this.subscribeFormRef}>
-          <h2 className="homepage__title">Новые приключения - в Вашем почтовом ящике:</h2>
+        </Section>
+        <Section className="homepage__section_subscribe" ref={this.subscribeFormRef}>
+          <Title>Новые приключения - в Вашем почтовом ящике:</Title>
           <SubscribeForm />
-        </section>
+        </Section>
       </GeneralLayout>
     );
   }

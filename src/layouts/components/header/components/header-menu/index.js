@@ -82,7 +82,7 @@ class HeaderMenu extends Component {
     }
     return (
       <div className="header-menu container">
-        <Link href="/" className="header-menu__logo" onClick={this.abuseClick}>
+        <Link href="/" className="header-menu__logo">
           Trip
           <span>Adventure</span>
         </Link>

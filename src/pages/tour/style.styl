@@ -1,6 +1,7 @@
 @import '../../styles/variables.styl'
 
 .tourpage
+  padding 0 15px
   &__header
     text-align center
     padding 35px 15px 0
@@ -34,4 +35,86 @@
         font-size 57px
       @media screen and (min-width 1400px)
         font-size 70px
-      
+  &__section
+    &_1
+      .tourpage__facts
+        display grid 
+        grid-template-columns repeat(4, 1fr)
+        grid-gap 15px
+        grid-auto-rows minmax(100px, auto)
+        text-align center
+    &_2
+      .tourpage__includedFacts
+        .includedFact 
+          display flex
+          margin 0
+          align-items center
+          &:nth-child(even)
+            flex-direction row-reverse
+            .includedFact
+              &__image
+                width calc(50% - 15px)
+                flex-basis calc(50% - 15px)
+              &__description
+                margin-right 15px
+                margin-left 0
+          &__image
+            flex 0 0 50%
+            width 50%
+            padding-top 35%
+            background-size cover
+            background-position center
+          &__description
+            height max-content
+            margin-left 15px
+            flex 1 1 auto
+    &_3
+      .tourpage__whyFacts
+        display grid
+        grid-template-columns repeat(2, 1fr)
+        grid-gap 15px
+        grid-auto-rows minmax(100px, auto)
+        &>div
+          padding-left 50px
+          position relative
+          &::before
+            content ''
+            position absolute 
+            top 5px
+            left 0
+            width 30px
+            height 15px
+            border-left borderBlack 
+            border-bottom borderBlack
+            transform rotate(-45deg)
+          h3
+            margin-top 0
+          i 
+            font-size 50px
+            margin-right 15px
+    &_5
+      .tourpage__whatsIncludedFacts
+        display grid 
+        grid-template-columns repeat(3, 1fr)
+        grid-gap 15px
+        grid-auto-rows minmax(100px, auto)
+        .fact
+          &__head
+            display flex
+            align-items center
+          &__title
+            margin 0 0 0 15px
+      .tourpage__additionalExpences
+        display grid 
+        grid-template-columns repeat(2, 1fr)
+        grid-gap 15px
+        grid-auto-rows minmax(100px, auto)
+        &>div
+          max-width 450px
+          &:nth-child(odd)
+            margin-left auto
+        h3
+          margin-top 0
+      .button
+        margin 7vh auto 0
+        display block
