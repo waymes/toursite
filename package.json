@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node src/server",
     "build": "next build src",
-    "start": "NODE_ENV=production node src/server -p $PORT",
+    "start": "NODE_ENV=production node src/server",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "heroku-postbuild": "npm run build"
