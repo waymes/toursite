@@ -17,6 +17,7 @@
     "@zeit/next-stylus": "^1.0.1",
     "bootstrap": "^4.3.1",
     "express": "^4.16.4",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "^8.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -27,6 +28,7 @@
     "react-slick": "^0.24.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "stylus": "^0.54.5"
   },

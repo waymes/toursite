@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import Router from 'next/router';
 
@@ -5,7 +6,7 @@ import EButton from '../../../../components/common/element-button';
 
 import withSizes from '../../../../helpers/sizes';
 
-import { tempAdventures } from '../../constants';
+import { tripPropType } from '../../../../prop-types/trips';
 
 import './style.styl';
 
@@ -24,15 +25,17 @@ const chooseSlidesAmount = ({ isMobile, isTablet, isDesktop }) => {
   return 4;
 };
 
-const TourSlider = props => (
+const TripSlider = ({
+  isMobile, isTablet, isDesktop, tripList,
+}) => (
   <Slider
     arrows
     speed={500}
-    slidesToShow={chooseSlidesAmount(props)}
-    slidesToScroll={chooseSlidesAmount(props)}
+    slidesToShow={chooseSlidesAmount({ isMobile, isTablet, isDesktop })}
+    slidesToScroll={chooseSlidesAmount({ isMobile, isTablet, isDesktop })}
     className="tour-slider"
   >
-    {tempAdventures.map(adventure => (
+    {tripList.map(adventure => (
       <EButton
         className="tour-slide"
         key={adventure.id}
@@ -52,8 +55,15 @@ const TourSlider = props => (
   </Slider>
 );
 
+TripSlider.propTypes = {
+  tripList: PropTypes.arrayOf(tripPropType).isRequired,
+  isDesktop: PropTypes.bool.isRequired,
+  isTablet: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
+};
+
 export default withSizes({
   withMobile: true,
   withTablet: true,
   withDesktop: true,
-})(TourSlider);
+})(TripSlider);

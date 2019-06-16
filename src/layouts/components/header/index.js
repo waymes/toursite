@@ -16,11 +16,7 @@ const Header = ({
         <HeaderMenu {...menuOptions} />
       </div>
       {children}
-      <EButton
-        className="header__scrolldown"
-        onMouseEnter={onScrollButtonClick}
-        onClick={onScrollButtonClick}
-      />
+      <EButton className="header__scrolldown" onClick={onScrollButtonClick} />
     </div>
   </header>
 );

@@ -1,19 +1,31 @@
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 import GeneralLayout from '../../layouts/general';
 import Title from '../../components/common/title';
 import Section from '../../components/common/section';
-import TourSlider from './components/tour-slider';
+import TripSlider from './components/trip-slider';
 import Atlas from './components/atlas';
 import Calendar from './components/calendar';
 import SubscribeForm from './components/subscribe-form';
 
+import { fetchTrips, fetchTripsSuccess } from '../../store/actions/trips';
+import { tripListSelector } from '../../store/selectors/trips';
+
 import { backgroundUrls } from './constants';
+import { tripPropType } from '../../prop-types/trips';
 
 import './style.styl';
 
 class Home extends React.PureComponent {
+  static async getInitialProps() {
+    const fetchedTripList = await fetchTrips();
+
+    return { fetchedTripList };
+  }
+
   constructor(props) {
     super(props);
     this.toursRef = React.createRef();
@@ -22,12 +34,13 @@ class Home extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { router } = this.props;
+    const { router, fetchTripsSuccessAction, fetchedTripList } = this.props;
 
     const { target } = router.query;
     if (target) {
       this.scrollIntoView(this[`${target}Ref`].current);
     }
+    fetchTripsSuccessAction(fetchedTripList);
   }
 
   scrollIntoView = (ref) => {
@@ -48,6 +61,8 @@ class Home extends React.PureComponent {
   }
 
   render() {
+    const { tripList } = this.props;
+
     const headerProps = {
       backgroundUrls,
       children: <h1 className="homepage__moto">Живи. Люби. Путешествуй...</h1>,
@@ -60,7 +75,7 @@ class Home extends React.PureComponent {
       <GeneralLayout className="homepage container" headerProps={headerProps}>
         <Section className="homepage__section_tourslider" ref={this.toursRef}>
           <Title>Выбери приключение:</Title>
-          <TourSlider />
+          <TripSlider tripList={tripList} />
         </Section>
         <Section className="homepage__section_atlas">
           <Title>10 фактов:</Title>
@@ -83,6 +98,20 @@ Home.propTypes = {
   router: PropTypes.shape({
     query: PropTypes.shape(),
   }).isRequired,
+  fetchTripsSuccessAction: PropTypes.func.isRequired,
+  tripList: PropTypes.arrayOf(tripPropType).isRequired,
+  fetchedTripList: PropTypes.arrayOf(tripPropType).isRequired,
 };
 
-export default withRouter(Home);
+const mapStateToProps = state => ({
+  tripList: tripListSelector(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchTripsSuccessAction: tripList => dispatch(fetchTripsSuccess(tripList)),
+});
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps),
+)(Home);
