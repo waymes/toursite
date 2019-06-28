@@ -31,22 +31,24 @@ const TripSlider = ({
   <Slider
     arrows
     speed={500}
+    autoplay
     slidesToShow={chooseSlidesAmount({ isMobile, isTablet, isDesktop })}
     slidesToScroll={chooseSlidesAmount({ isMobile, isTablet, isDesktop })}
     className="tour-slider"
   >
     {tripList.map(adventure => (
-      <EButton
-        className="tour-slide"
-        key={adventure.id}
-        onDoubleClick={() => Router.push(`/tour?id=${adventure.id}`, `/tour/${adventure.id}`)}
-      >
+      <EButton className="tour-slide" key={adventure.id}>
         <div
           className="tour-slide__inner"
-          style={{ backgroundImage: `url(${adventure.img})` }}
+          style={{ backgroundImage: `url(${adventure.image})` }}
         >
           <div className="tour-slide__content">
-            <h3 className="tour-slide__title">{adventure.title}</h3>
+            <EButton
+              className="tour-slide__title"
+              onClick={() => Router.push(`/tour?id=${adventure.id}`, `/tour/${adventure.id}`)}
+            >
+              {adventure.title}
+            </EButton>
             <div className="tour-slide__description">Даты: 12.06 ‒ 23.06</div>
           </div>
         </div>
