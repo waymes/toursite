@@ -21,8 +21,12 @@ import './style.styl';
 
 class Home extends React.PureComponent {
   static async getInitialProps({ reduxStore }) {
-    const tripList = await fetchTrips();
-    reduxStore.dispatch(fetchTripsSuccessAction(tripList));
+    try {
+      const tripList = await fetchTrips();
+      reduxStore.dispatch(fetchTripsSuccessAction(tripList));
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   constructor(props) {
