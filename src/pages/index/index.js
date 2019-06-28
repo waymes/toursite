@@ -11,7 +11,7 @@ import Atlas from './components/atlas';
 import Calendar from './components/calendar';
 import SubscribeForm from './components/subscribe-form';
 
-import { fetchTrips, fetchTripsSuccess } from '../../store/actions/trips';
+import { fetchTrips, fetchTripsAction, fetchTripsSuccessAction } from '../../store/actions/trips';
 import { tripListSelector } from '../../store/selectors/trips';
 
 import { backgroundUrls } from './constants';
@@ -20,10 +20,9 @@ import { tripPropType } from '../../prop-types/trips';
 import './style.styl';
 
 class Home extends React.PureComponent {
-  static async getInitialProps() {
-    const fetchedTripList = await fetchTrips();
-
-    return { fetchedTripList };
+  static async getInitialProps({ reduxStore }) {
+    const tripList = await fetchTrips();
+    reduxStore.dispatch(fetchTripsSuccessAction(tripList));
   }
 
   constructor(props) {
@@ -34,13 +33,16 @@ class Home extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { router, fetchTripsSuccessAction, fetchedTripList } = this.props;
+    const { router, tripList } = this.props;
 
     const { target } = router.query;
     if (target) {
-      this.scrollIntoView(this[`${target}Ref`].current);
+      const ref = this[`${target}Ref`];
+      this.scrollIntoView(ref && ref.current);
     }
-    fetchTripsSuccessAction(fetchedTripList);
+    if (tripList.length === 0) {
+      fetchTripsAction();
+    }
   }
 
   scrollIntoView = (ref) => {
@@ -98,20 +100,14 @@ Home.propTypes = {
   router: PropTypes.shape({
     query: PropTypes.shape(),
   }).isRequired,
-  fetchTripsSuccessAction: PropTypes.func.isRequired,
   tripList: PropTypes.arrayOf(tripPropType).isRequired,
-  fetchedTripList: PropTypes.arrayOf(tripPropType).isRequired,
 };
 
 const mapStateToProps = state => ({
   tripList: tripListSelector(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchTripsSuccessAction: tripList => dispatch(fetchTripsSuccess(tripList)),
-});
-
 export default compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
 )(Home);

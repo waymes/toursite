@@ -3,9 +3,15 @@
 .title
   margin-top 9vh
   margin-bottom 8vh
-  font-size titleFontSize
+  font-size titleFontSizeSm
   font-weight bold
   color colorBlack
   text-align center
+  @media screen and (min-width mediumWidth)
+    font-size titleFontSize
+    
   &__secondary
-    font-size titleFontSizeSecondary
+    font-size titleFontSizeSecondarySm
+    @media screen and (min-width mediumWidth)
+      font-size titleFontSizeSecondary
+  
