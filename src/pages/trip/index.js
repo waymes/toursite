@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import Error from 'next/error';
 
 import GeneralLayout from '../../layouts/general';
 import Title from '../../components/common/title';
@@ -49,7 +50,7 @@ class TripPage extends React.Component {
   render() {
     const { selectedTrip } = this.props;
 
-    if (!selectedTrip) return null;
+    if (!selectedTrip) return <Error statusCode={404} />;
 
     const headerProps = {
       backgroundUrls: [selectedTrip.image],

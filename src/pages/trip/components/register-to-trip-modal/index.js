@@ -25,6 +25,7 @@ export default () => {
             <Input name="phone" placeholder="Телефон" required />
             <Textarea name="question" placeholder="Задайте свой вопрос, если есть" />
             <Button type="submit">Отправить</Button>
+            <Button onClick={closeRegisterToTripModal} color="secondary">Отмена</Button>
             <small>Мы не передаем информацию третьим сторонам.</small>
           </form>
         )}

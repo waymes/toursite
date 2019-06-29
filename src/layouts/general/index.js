@@ -10,7 +10,7 @@ import '../../styles/main.styl';
 const GeneralLayout = ({
   children, className, title, headerProps,
 }) => (
-  <>
+  <div className="generalLayout">
     <Head>
       <title>{title}</title>
       <link
@@ -26,7 +26,7 @@ const GeneralLayout = ({
       {children}
     </div>
     <Footer />
-  </>
+  </div>
 );
 
 GeneralLayout.propTypes = {

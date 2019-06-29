@@ -20,7 +20,7 @@ function parseJSON(response) {
 export default (url, params = {}) => {
   const formattedParams = {
     ...params,
-    body: JSON.stringify(params.body),
+    body: params.body ? JSON.stringify(params.body) : null,
   };
   return fetch(`http://localhost:3005${url}`, formattedParams)
     .then(checkStatus)
