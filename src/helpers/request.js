@@ -17,8 +17,12 @@ function parseJSON(response) {
   return response.json();
 }
 
-export default (url, params) => {
-  return fetch(`http://localhost:3005${url}`)
+export default (url, params = {}) => {
+  const formattedParams = {
+    ...params,
+    body: JSON.stringify(params.body),
+  };
+  return fetch(`http://localhost:3005${url}`, formattedParams)
     .then(checkStatus)
     .then(parseJSON);
 };

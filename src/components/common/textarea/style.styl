@@ -1,0 +1,46 @@
+@import '../../../styles/variables.styl'
+
+.textarea
+  position relative
+  border borderLight
+  box-sizing border-box
+  &_withValue
+    .textarea__placeholder
+      transform translateY(-110%) scale(0.7)
+  &__placeholder
+    position absolute 
+    top 25px
+    transform translateY(-50%)
+    transform-origin 0
+    left 15px
+    transition all .2s
+    pointer-events none
+    color colorDark
+  &__underline
+    position absolute 
+    left -1px
+    bottom -1px
+    width 0
+    height 3px
+    background coral
+    transition all .4s
+  textarea
+    border none
+    padding 23px 15px 7px
+    outline none
+    font-size fontSize
+    background-color colorLighter
+    width 100%
+    box-sizing border-box
+    vertical-align top
+    resize: vertical
+    min-height: 70px
+    &:focus
+      background-color colorWhite
+    &:focus ~ .textarea
+      &__underline
+        width calc(100% + 2px)
+      &__placeholder
+        transform translateY(-110%) scale(0.7)
+        background #fff
+

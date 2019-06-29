@@ -1,25 +1,33 @@
 import PropTypes from 'prop-types';
+import { Field } from 'react-final-form';
 
 import './style.styl';
 
 const Input = ({
-  onChange, placeholder, value, ...other
+  placeholder, name, type, required,
 }) => (
-  <div className={`input ${value ? 'input_withValue' : ''}`}>
-    <input type="text" onChange={onChange} {...other} />
-    {placeholder && <span className="input__placeholder">{placeholder}</span>}
-    <span className="input__underline" />
-  </div>
+  <Field name={name}>
+    {({ input }) => (
+      <div className={`input ${input.value ? 'input_withValue' : ''}`}>
+        <input {...input} type={type} required={required} />
+        {placeholder && <span className="input__placeholder">{placeholder}</span>}
+        <span className="input__underline" />
+      </div>
+    )}
+  </Field>
 );
 
 Input.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  type: PropTypes.string,
+  required: PropTypes.bool,
 };
 
 Input.defaultProps = {
   placeholder: '',
+  type: 'text',
+  required: false,
 };
 
 export default Input;

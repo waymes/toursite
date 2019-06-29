@@ -4,12 +4,13 @@ import GeneralLayout from '../../layouts/general';
 import Title from '../../components/common/title';
 import Section from '../../components/common/section';
 import Button from '../../components/common/button';
+import RegisterToTripModal from './components/register-to-trip-modal';
 import Gallery from './components/gallery';
 
 import {
   tempFacts, whyFacts, includedFacts, whatsIncludedFacts, additionalExpences,
 } from './constants';
-import { fetchTrip } from '../../store/actions/trips';
+import { fetchTrip, openRegisterToTripModal } from '../../store/actions/trips';
 import { selectedTripSelector } from '../../store/selectors/trips';
 import { tripPropType } from '../../prop-types/trips';
 
@@ -117,8 +118,9 @@ class TripPage extends React.Component {
               </div>
             ))}
           </div>
-          <Button>Подать заявку</Button>
+          <Button onClick={openRegisterToTripModal}>Подать заявку</Button>
         </Section>
+        <RegisterToTripModal />
       </GeneralLayout>
     );
   }
