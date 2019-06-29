@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+
 import GeneralLayout from '../../layouts/general';
 import Title from '../../components/common/title';
 import Section from '../../components/common/section';
@@ -7,10 +9,17 @@ import Gallery from './components/gallery';
 import {
   tempFacts, whyFacts, includedFacts, whatsIncludedFacts, additionalExpences,
 } from './constants';
+import { fetchTrip } from '../../store/actions/trips';
+import { selectedTripSelector } from '../../store/selectors/trips';
+import { tripPropType } from '../../prop-types/trips';
 
 import './style.styl';
 
-class TourPage extends React.Component {
+class TripPage extends React.Component {
+  static async getInitialProps({ query }) {
+    await fetchTrip(query.id);
+  }
+
   constructor(props) {
     super(props);
     this.factsRef = React.createRef();
@@ -37,8 +46,12 @@ class TourPage extends React.Component {
   }
 
   render() {
+    const { selectedTrip } = this.props;
+
+    if (!selectedTrip) return null;
+
     const headerProps = {
-      backgroundUrls: ['/static/background_3.jpg'],
+      backgroundUrls: [selectedTrip.image],
       onScrollButtonClick: this.scrollToFacts,
       children: this.renderHeaderChildren(),
     };
@@ -111,4 +124,16 @@ class TourPage extends React.Component {
   }
 }
 
-export default TourPage;
+TripPage.propTypes = {
+  selectedTrip: tripPropType,
+};
+
+TripPage.defaultProps = {
+  selectedTrip: null,
+};
+
+const mapStateToProps = state => ({
+  selectedTrip: selectedTripSelector(state),
+});
+
+export default connect(mapStateToProps)(TripPage);

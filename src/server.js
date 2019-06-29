@@ -11,10 +11,10 @@ app
   .then(() => {
     const server = express();
 
-    server.get('/tour/:id', (req, res) => {
-      const actualPage = '/tour';
-      const queryParams = { tourId: req.params.id };
-      app.render(req, res, actualPage, queryParams);
+    server.get('/trip/:id', (req, res) => {
+      const actualPage = '/trip';
+      const query = { id: req.params.id };
+      app.render(req, res, actualPage, query);
     });
 
     server.get('*', (req, res) => handle(req, res));

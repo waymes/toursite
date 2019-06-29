@@ -28,8 +28,6 @@ export default App => (
       // console.log(appContext.ctx);
 
       // eslint-disable-next-line no-param-reassign
-      appContext.ctx = {};
-      // eslint-disable-next-line no-param-reassign
       appContext.ctx.reduxStore = reduxStore;
       let appProps = {};
       if (typeof App.getInitialProps === 'function') {

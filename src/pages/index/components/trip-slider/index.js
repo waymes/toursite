@@ -45,7 +45,7 @@ const TripSlider = ({
           <div className="tour-slide__content">
             <EButton
               className="tour-slide__title"
-              onClick={() => Router.push(`/tour?id=${adventure.id}`, `/tour/${adventure.id}`)}
+              onClick={() => Router.push(`/trip?id=${adventure.id}`, `/trip/${adventure.id}`)}
             >
               {adventure.title}
             </EButton>

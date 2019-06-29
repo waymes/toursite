@@ -11,7 +11,7 @@ import Atlas from './components/atlas';
 import Calendar from './components/calendar';
 import SubscribeForm from './components/subscribe-form';
 
-import { fetchTrips, fetchTripsAction, fetchTripsSuccessAction } from '../../store/actions/trips';
+import { fetchTrips } from '../../store/actions/trips';
 import { tripListSelector } from '../../store/selectors/trips';
 
 import { backgroundUrls } from './constants';
@@ -20,13 +20,8 @@ import { tripPropType } from '../../prop-types/trips';
 import './style.styl';
 
 class Home extends React.PureComponent {
-  static async getInitialProps({ reduxStore }) {
-    try {
-      const tripList = await fetchTrips();
-      reduxStore.dispatch(fetchTripsSuccessAction(tripList));
-    } catch (error) {
-      console.log(error);
-    }
+  static async getInitialProps() {
+    await fetchTrips();
   }
 
   constructor(props) {
@@ -37,15 +32,12 @@ class Home extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { router, tripList } = this.props;
+    const { router } = this.props;
 
     const { target } = router.query;
     if (target) {
       const ref = this[`${target}Ref`];
       this.scrollIntoView(ref && ref.current);
-    }
-    if (tripList.length === 0) {
-      fetchTripsAction();
     }
   }
 
