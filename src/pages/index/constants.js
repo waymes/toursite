@@ -1,12 +1,3 @@
-export const tempAdventures = [
-  { id: 1, title: 'Персия', img: '/static/background_1.jpg' },
-  { id: 2, title: 'Грузия', img: '/static/background_2.jpg' },
-  { id: 3, title: 'Иран', img: '/static/background_3.jpg' },
-  { id: 4, title: 'Стамбул', img: '/static/background_4.jpg' },
-  { id: 5, title: 'Дорн', img: '/static/background_5.jpg' },
-  { id: 6, title: 'Винтерфелл', img: '/static/background_1.jpg' },
-];
-
 export const factList = [
   {
     title: 'Мы едем в Грузию.',
@@ -75,47 +66,4 @@ export const backgroundUrls = [
   '/static/background_3.jpg',
   '/static/background_4.jpg',
   '/static/background_5.jpg',
-];
-
-export const tourList = [
-  {
-    id: 1,
-    dates: '1 мая - 5 мая 2019',
-    name: 'Карпатский Памир | Поход на майские паздники',
-    place: 'Карпаты',
-    difficaltyLevel: 3,
-    price: 2890,
-  },
-  {
-    id: 2,
-    dates: '7 мая - 15 мая 2019',
-    name: 'Поход по мармаросам',
-    place: 'Иран',
-    difficaltyLevel: 5,
-    price: 9560,
-  },
-  {
-    id: 3,
-    dates: '3 июня - 10 июня 2019',
-    name: 'Черногорский хребет',
-    place: 'Грузия',
-    difficaltyLevel: 4,
-    price: 8500,
-  },
-  {
-    id: 4,
-    dates: '14 июля - 29 июля 2019',
-    name: 'Южные Альпы',
-    place: 'Персия',
-    difficaltyLevel: 1,
-    price: 13450,
-  },
-  {
-    id: 5,
-    dates: '31 июля - 8 августа 2019',
-    name: 'Монастыри Тибета',
-    place: 'Тибет',
-    difficaltyLevel: 2,
-    price: 21300,
-  },
 ];

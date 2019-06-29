@@ -1,10 +1,9 @@
+import PropTypes from 'prop-types';
 import Slider from 'react-slick';
-
-import { slides } from '../../constants';
 
 import './style.styl';
 
-const Gallery = () => (
+const Gallery = ({ images }) => (
   <div className="gallery">
     <Slider
       dots
@@ -15,13 +14,21 @@ const Gallery = () => (
       slidesToShow={1}
       slidesToScroll={1}
     >
-      {slides.map(slide => (
+      {images.map(image => (
         <div>
-          <div className="slide" style={{ backgroundImage: `url(${slide})` }} />
+          <div className="slide" style={{ backgroundImage: `url(${image})` }} />
         </div>
       ))}
     </Slider>
   </div>
 );
+
+Gallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string),
+};
+
+Gallery.defaultProps = {
+  images: [],
+};
 
 export default Gallery;

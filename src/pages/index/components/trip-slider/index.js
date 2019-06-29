@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import Router from 'next/router';
+import moment from 'moment';
 
 import EButton from '../../../../components/common/element-button';
 
@@ -36,20 +37,25 @@ const TripSlider = ({
     slidesToScroll={chooseSlidesAmount({ isMobile, isTablet, isDesktop })}
     className="tour-slider"
   >
-    {tripList.map(adventure => (
-      <EButton className="tour-slide" key={adventure.id}>
+    {tripList.map(trip => (
+      <EButton className="tour-slide" key={trip.id}>
         <div
           className="tour-slide__inner"
-          style={{ backgroundImage: `url(${adventure.image})` }}
+          style={{ backgroundImage: `url(${trip.image})` }}
         >
           <div className="tour-slide__content">
             <EButton
               className="tour-slide__title"
-              onClick={() => Router.push(`/trip?id=${adventure.id}`, `/trip/${adventure.id}`)}
+              onClick={() => Router.push(`/trip?id=${trip.id}`, `/trip/${trip.id}`)}
             >
-              {adventure.title}
+              {trip.destination}
             </EButton>
-            <div className="tour-slide__description">Даты: 12.06 ‒ 23.06</div>
+            <div className="tour-slide__description">
+              {'Даты: '}
+              {moment(trip.dateFrom).format('DD.MM')}
+              {' ‒ '}
+              {moment(trip.dateTo).format('DD.MM')}
+            </div>
           </div>
         </div>
       </EButton>

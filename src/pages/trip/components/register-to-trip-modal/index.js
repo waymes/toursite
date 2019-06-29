@@ -22,7 +22,7 @@ export default () => {
             <h5>Отправьте заявку:</h5>
             <Input name="email" placeholder="E-mail" type="email" required />
             <Input name="name" placeholder="Имя" required />
-            <Input name="phone" placeholder="Телефон" required />
+            <Input name="phone" placeholder="Телефон" />
             <Textarea name="question" placeholder="Задайте свой вопрос, если есть" />
             <Button type="submit">Отправить</Button>
             <Button onClick={closeRegisterToTripModal} color="secondary">Отмена</Button>

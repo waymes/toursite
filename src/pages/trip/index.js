@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Error from 'next/error';
+import moment from 'moment';
 
 import GeneralLayout from '../../layouts/general';
 import Title from '../../components/common/title';
@@ -8,14 +9,13 @@ import Button from '../../components/common/button';
 import RegisterToTripModal from './components/register-to-trip-modal';
 import Gallery from './components/gallery';
 
-import {
-  tempFacts, whyFacts, includedFacts, whatsIncludedFacts, additionalExpences,
-} from './constants';
 import { fetchTrip, openRegisterToTripModal } from '../../store/actions/trips';
 import { selectedTripSelector } from '../../store/selectors/trips';
 import { tripPropType } from '../../prop-types/trips';
 
 import './style.styl';
+
+moment.locale('ru'); // TODO: make dynamic from client
 
 class TripPage extends React.Component {
   static async getInitialProps({ query }) {
@@ -37,12 +37,18 @@ class TripPage extends React.Component {
   }
 
   renderHeaderChildren() {
+    const { selectedTrip } = this.props;
+
     return (
       <div className="tourpage__header">
-        <h4>Думаешь, куда поехать на майские праздники?</h4>
-        <h3>Открой для себя магию Востока!</h3>
-        <h2>29 апреля - 11 мая</h2>
-        <h1>ТУР В ИРАН</h1>
+        <h4>{selectedTrip.title1}</h4>
+        <h3>{selectedTrip.title2}</h3>
+        <h2>
+          {moment(selectedTrip.dateFrom).format('DD MMMM')}
+          {' - '}
+          {moment(selectedTrip.dateTo).format('DD MMMM')}
+        </h2>
+        <h1>{selectedTrip.name}</h1>
       </div>
     );
   }
@@ -60,62 +66,62 @@ class TripPage extends React.Component {
     return (
       <GeneralLayout title="Тур в Иран" className="tourpage container" headerProps={headerProps}>
         <Section className="tourpage__section tourpage__section_1" ref={this.factsRef}>
-          <Title>Готовьтесь к самому потрясающему приключению:</Title>
+          <Title>{selectedTrip.firstBlockTitle}</Title>
           <div className="tourpage__facts">
-            {tempFacts.map(fact => (
-              <div key={fact.title}>
-                <h3>{fact.title}</h3>
-                <p>{fact.description}</p>
+            {selectedTrip.firstBlockItems.map(item => (
+              <div key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.details}</p>
               </div>
             ))}
           </div>
         </Section>
         <Section className="tourpage__section tourpage__section_2">
-          <Title>Что нас ждёт в поездке?</Title>
+          <Title>{selectedTrip.secondBlockTitle}</Title>
           <div className="tourpage__includedFacts">
-            {includedFacts.map(fact => (
-              <div className="includedFact" key={fact.url}>
-                <div className="includedFact__image" style={{ backgroundImage: `url(${fact.url})` }} />
-                <p className="includedFact__description">{fact.description}</p>
+            {selectedTrip.secondBlockItems.map(item => (
+              <div className="includedFact" key={item.image}>
+                <div className="includedFact__image" style={{ backgroundImage: `url(${item.image})` }} />
+                <p className="includedFact__description">{item.text}</p>
               </div>
             ))}
           </div>
         </Section>
         <Section className="tourpage__section tourpage__section_3">
-          <Title>Почему Иран?</Title>
+          <Title>{selectedTrip.thirdBlockTitle}</Title>
           <div className="tourpage__whyFacts">
-            {whyFacts.map(fact => (
-              <div key={fact.title}>
-                <h3>{fact.title}</h3>
-                <p>{fact.description}</p>
+            {selectedTrip.thirdBlockItems.map(item => (
+              <div key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.details}</p>
               </div>
             ))}
           </div>
         </Section>
         <Section className="tourpage__section tourpage__section_5">
-          <Title>Посмотрите, как это было в прошлый раз:</Title>
-          <Gallery />
+          <Title>{selectedTrip.fourthBlockTitle}</Title>
+          <Gallery images={selectedTrip.fourthBlockItems} />
         </Section>
         <Section className="tourpage__section tourpage__section_5">
-          <Title>Что включено?</Title>
+          <Title>{selectedTrip.fifthBlockTitle}</Title>
           <div className="tourpage__whatsIncludedFacts">
-            {whatsIncludedFacts.map(fact => (
+            {selectedTrip.fifthBlockItems.map(item => (
               <div className="fact">
                 <div className="fact__head">
-                  <i className={fact.icon} />
-                  <h3 className="fact__title">{fact.title}</h3>
+                  <i className={item.icon} />
+                  <h3 className="fact__title">{item.title}</h3>
                 </div>
-                <p className="fact__description">{fact.description}</p>
+                <p className="fact__description">{item.details}</p>
               </div>
             ))}
           </div>
-          <Title>Стоимость: 1099 $</Title>
+          <Title>{`Стоимость: ${selectedTrip.price} $`}</Title>
           <Title secondary>Дополнительные расходы:</Title>
           <div className="tourpage__additionalExpences">
-            {additionalExpences.map(expence => (
+            {selectedTrip.additionalExpenses.map(expence => (
               <div>
                 <h3>{expence.title}</h3>
-                <p>{expence.description}</p>
+                <p>{expence.details}</p>
               </div>
             ))}
           </div>

@@ -81,7 +81,7 @@ class Home extends React.PureComponent {
         </Section>
         <Section className="homepage__section_calendar" ref={this.calendarRef}>
           <Title>Календарь туров:</Title>
-          <Calendar />
+          <Calendar tripList={tripList} />
         </Section>
         <Section className="homepage__section_subscribe" ref={this.subscribeFormRef}>
           <Title>Новые приключения - в Вашем почтовом ящике:</Title>
