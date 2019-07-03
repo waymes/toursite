@@ -41,14 +41,23 @@ class TripPage extends React.Component {
 
     return (
       <div className="tourpage__header">
-        <h4>{selectedTrip.title1}</h4>
-        <h3>{selectedTrip.title2}</h3>
-        <h2>
+        <h4 className="tourpage__header__title1">{selectedTrip.title1}</h4>
+        <h3 className="tourpage__header__title2">{selectedTrip.title2}</h3>
+        <h2 className="tourpage__header__dates">
           {moment(selectedTrip.dateFrom).format('DD MMMM')}
           {' - '}
           {moment(selectedTrip.dateTo).format('DD MMMM')}
         </h2>
-        <h1>{selectedTrip.name}</h1>
+        <h1 className="tourpage__header__name">{selectedTrip.name}</h1>
+      </div>
+    );
+  }
+
+  renderTextBlock({ title, details }) {
+    return (
+      <div key={title} className="textBlock">
+        <h3 className="textBlock__title">{title}</h3>
+        <p className="textBlock__details">{details}</p>
       </div>
     );
   }
@@ -67,18 +76,13 @@ class TripPage extends React.Component {
       <GeneralLayout title="Тур в Иран" className="tourpage container" headerProps={headerProps}>
         <Section className="tourpage__section tourpage__section_1" ref={this.factsRef}>
           <Title>{selectedTrip.firstBlockTitle}</Title>
-          <div className="tourpage__facts">
-            {selectedTrip.firstBlockItems.map(item => (
-              <div key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.details}</p>
-              </div>
-            ))}
+          <div className="tourpage__firstBlockItems">
+            {selectedTrip.firstBlockItems.map(this.renderTextBlock)}
           </div>
         </Section>
         <Section className="tourpage__section tourpage__section_2">
           <Title>{selectedTrip.secondBlockTitle}</Title>
-          <div className="tourpage__includedFacts">
+          <div className="tourpage__secondBlockItems">
             {selectedTrip.secondBlockItems.map(item => (
               <div className="includedFact" key={item.image}>
                 <div className="includedFact__image" style={{ backgroundImage: `url(${item.image})` }} />
@@ -89,13 +93,8 @@ class TripPage extends React.Component {
         </Section>
         <Section className="tourpage__section tourpage__section_3">
           <Title>{selectedTrip.thirdBlockTitle}</Title>
-          <div className="tourpage__whyFacts">
-            {selectedTrip.thirdBlockItems.map(item => (
-              <div key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.details}</p>
-              </div>
-            ))}
+          <div className="tourpage__thirdBlockItems">
+            {selectedTrip.thirdBlockItems.map(this.renderTextBlock)}
           </div>
         </Section>
         <Section className="tourpage__section tourpage__section_5">
@@ -104,9 +103,9 @@ class TripPage extends React.Component {
         </Section>
         <Section className="tourpage__section tourpage__section_5">
           <Title>{selectedTrip.fifthBlockTitle}</Title>
-          <div className="tourpage__whatsIncludedFacts">
+          <div className="tourpage__fifthBlockItems">
             {selectedTrip.fifthBlockItems.map(item => (
-              <div className="fact">
+              <div className="fact" key={item.title}>
                 <div className="fact__head">
                   <i className={item.icon} />
                   <h3 className="fact__title">{item.title}</h3>
@@ -117,13 +116,8 @@ class TripPage extends React.Component {
           </div>
           <Title>{`Стоимость: ${selectedTrip.price} $`}</Title>
           <Title secondary>Дополнительные расходы:</Title>
-          <div className="tourpage__additionalExpences">
-            {selectedTrip.additionalExpenses.map(expence => (
-              <div>
-                <h3>{expence.title}</h3>
-                <p>{expence.details}</p>
-              </div>
-            ))}
+          <div className="tourpage__additionalExpenses">
+            {selectedTrip.additionalExpenses.map(this.renderTextBlock)}
           </div>
           <Button onClick={openRegisterToTripModal}>Подать заявку</Button>
         </Section>

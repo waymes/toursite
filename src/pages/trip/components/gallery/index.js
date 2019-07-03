@@ -15,7 +15,7 @@ const Gallery = ({ images }) => (
       slidesToScroll={1}
     >
       {images.map(image => (
-        <div>
+        <div key={image}>
           <div className="slide" style={{ backgroundImage: `url(${image})` }} />
         </div>
       ))}
