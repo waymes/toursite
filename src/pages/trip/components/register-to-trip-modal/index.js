@@ -23,7 +23,7 @@ export default () => {
             <Input name="email" placeholder="E-mail" type="email" required />
             <Input name="name" placeholder="Имя" required />
             <Input name="phone" placeholder="Телефон" />
-            <Textarea name="question" placeholder="Задайте свой вопрос, если есть" />
+            <Textarea name="question" placeholder="Задайте вопрос, если есть" />
             <Button type="submit">Отправить</Button>
             <Button onClick={closeRegisterToTripModal} color="secondary">Отмена</Button>
             <small>Мы не передаем информацию третьим сторонам.</small>

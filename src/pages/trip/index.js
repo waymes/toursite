@@ -6,6 +6,7 @@ import GeneralLayout from '../../layouts/general';
 import Title from '../../components/common/title';
 import Section from '../../components/common/section';
 import Button from '../../components/common/button';
+import Link from '../../components/common/link';
 import RegisterToTripModal from './components/register-to-trip-modal';
 import Gallery from './components/gallery';
 
@@ -41,10 +42,9 @@ class TripPage extends React.Component {
 
     return (
       <div className="tourpage__header">
-        <h4 className="tourpage__header__title1">{selectedTrip.title1}</h4>
-        <h3 className="tourpage__header__title2">{selectedTrip.title2}</h3>
+        <h3 className="tourpage__header__title">{selectedTrip.title}</h3>
         <h2 className="tourpage__header__dates">
-          {moment(selectedTrip.dateFrom).format('DD MMMM')}
+          {moment(selectedTrip.dateFrom).format('DD')}
           {' - '}
           {moment(selectedTrip.dateTo).format('DD MMMM')}
         </h2>
@@ -84,9 +84,8 @@ class TripPage extends React.Component {
           <Title>{selectedTrip.secondBlockTitle}</Title>
           <div className="tourpage__secondBlockItems">
             {selectedTrip.secondBlockItems.map(item => (
-              <div className="includedFact" key={item.image}>
-                <div className="includedFact__image" style={{ backgroundImage: `url(${item.image})` }} />
-                <p className="includedFact__description">{item.text}</p>
+              <div className="imageFact" key={item.image} style={{ backgroundImage: `url(${item.image})` }}>
+                <div className="imageFact__details">{item.text}</div>
               </div>
             ))}
           </div>
@@ -120,6 +119,7 @@ class TripPage extends React.Component {
             {selectedTrip.additionalExpenses.map(this.renderTextBlock)}
           </div>
           <Button onClick={openRegisterToTripModal}>Подать заявку</Button>
+          <Link href="/countries"><Button>Узнать больше о стране</Button></Link>
         </Section>
         <RegisterToTripModal />
       </GeneralLayout>
