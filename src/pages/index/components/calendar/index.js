@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import Rating from 'react-rating';
 import moment from 'moment';
 
 import Link from '../../../../components/common/link';
@@ -16,7 +15,6 @@ const Calendar = ({ tripList }) => (
           <th>Даты</th>
           <th>Название</th>
           <th>Место проведения</th>
-          <th>Сложность</th>
           <th>Цена, $</th>
         </tr>
       </thead>
@@ -30,14 +28,6 @@ const Calendar = ({ tripList }) => (
             </td>
             <td><Link href={`/trip?id=${trip.id}`} as={`/trip/${trip.id}`}>{trip.name}</Link></td>
             <td>{trip.destination}</td>
-            <td>
-              <Rating
-                readonly
-                initialRating={trip.difficultyLevel}
-                fullSymbol={<i className="fas fa-hiking icon icon_full" />}
-                emptySymbol={<i className="fas fa-hiking icon icon_empty" />}
-              />
-            </td>
             <td>{trip.price}</td>
           </tr>
         ))}
