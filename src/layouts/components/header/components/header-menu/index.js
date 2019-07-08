@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
+import classnames from 'classnames';
 
 import Link from '../../../../../components/common/link';
 import EButton from '../../../../../components/common/element-button';
@@ -24,11 +25,6 @@ class HeaderMenu extends Component {
   toggleBurger = () => {
     const { isBurgerActive } = this.state;
 
-    if (!isBurgerActive) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
     this.setState({ isBurgerActive: !isBurgerActive });
   }
 
@@ -73,21 +69,20 @@ class HeaderMenu extends Component {
 
   render() {
     const { isBurgerActive } = this.state;
-    const { isMobile, isTablet } = this.props;
+    const { isMobile, isTablet, isExpanded } = this.props;
 
     const showBurger = isMobile || isTablet;
-    const burgerClasses = ['header-menu__burger'];
-    if (isBurgerActive) {
-      burgerClasses.push('header-menu__burger_active');
-    }
     return (
-      <div className="header-menu container">
+      <div className={classnames('header-menu', 'container', { 'header-menu_expanded': isExpanded })}>
         <Link href="/" className="header-menu__logo">
           Trip
           <span>Adventure</span>
         </Link>
         {showBurger && (
-          <EButton className={burgerClasses.join(' ')} onClick={this.toggleBurger}>
+          <EButton
+            className={classnames('header-menu__burger', { 'header-menu__burger_active': isBurgerActive })}
+            onClick={this.toggleBurger}
+          >
             <span />
             <span />
             <span />
@@ -105,6 +100,7 @@ HeaderMenu.propTypes = {
   scrollToSubscribeForm: PropTypes.func,
   isMobile: PropTypes.bool,
   isTablet: PropTypes.bool,
+  isExpanded: PropTypes.bool.isRequired,
 };
 
 HeaderMenu.defaultProps = {

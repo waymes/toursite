@@ -6,9 +6,13 @@
 }
 
 .header
-  height 100vh
   min-height max-content
   position relative
+  &_isExpanded
+    height 100vh
+    .header__menuHolder
+      background-image linear-gradient(rgba(0, 0, 0, 0.4), transparent)
+
   &__content
     position relative
     z-index 2
@@ -18,14 +22,17 @@
     justify-content space-between
   &__menuHolder
     padding 0 15px
-    background-image linear-gradient(rgba(0, 0, 0, 0.4), transparent)
+    background-image none
   &__scrolldown
     width 60px
-    margin 0 auto 15vh
+    height 60px
+    margin 0 auto 10vh
     padding 10px 0
     outline none
     position relative
     cursor pointer
+    border-radius: 50%
+    box-sizing: border-box
     &::before, &::after
       content ''
       position absolute
@@ -36,8 +43,9 @@
       border-bottom borderWhite
       transform rotate(45deg)
       transform-origin 50% 50%
+      top -10px
       left 9px
       animation blink 1.2s linear 0s infinite alternate
     &::after
-      top 35px
+      top 15px
       animation blink 1.2s linear .3s infinite alternate

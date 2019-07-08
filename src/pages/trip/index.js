@@ -44,7 +44,7 @@ class TripPage extends React.Component {
       <div className="tourpage__header">
         <h3 className="tourpage__header__title">{selectedTrip.title}</h3>
         <h2 className="tourpage__header__dates">
-          {moment(selectedTrip.dateFrom).format('DD')}
+          {moment(selectedTrip.dateFrom).format('D')}
           {' - '}
           {moment(selectedTrip.dateTo).format('DD MMMM')}
         </h2>

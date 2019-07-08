@@ -28,7 +28,7 @@ menuOpen()
   align-items center
   padding-top 3vh
   padding-bottom 3vh
-  border-bottom 1px solid rgba(255, 255, 255, 0.2)
+  border-bottom borderLighter
   box-sizing border-box
   @media screen and (min-width mediumWidth) {
     padding-top 4vh
@@ -41,7 +41,6 @@ menuOpen()
     color greenyellow
     font-size 25px
     font-weight bold
-    text-shadow 1px 1px colorBlack
     text-decoration none
     span 
       color coral
@@ -55,35 +54,33 @@ menuOpen()
       padding-left 0
       margin 0
       &__subscribeButton
-        color colorWhite
-        color colorWhite
+        color colorDark
         font-size fontSizeS
         font-weight 300
         letter-spacing -.5px
-        border borderWhite
+        border borderLight
         border-radius 17px
         padding 5px 10px 6px
         cursor pointer
         transition all .4s
         background-color transparent
-        border-color rgba(255, 255, 255, 0.6)
         outline none
-        &:hover, &:focus
-          background-color hsla(0,0%,100%,.1)
-          border-color hsla(0,0%,100%,.38)
+        &:hover
+          background-color colorLighter
       li
         display inline-block
         margin-left 20px
         .link
-          color colorWhite
+          color colorDark
           font-size fontSizeS
           font-weight 400
           letter-spacing -.5px
           text-decoration none
           transition 0.4s
           cursor pointer
-          &:hover
-            color hsla(0,0%,100%,.6)
+          outline: none
+          &:hover, &:focus
+            color #aaa
   &__burger
     width 30px
     height 20px
@@ -125,4 +122,20 @@ menuOpen()
           transform rotate(135deg)
       & + .header-menu__nav
         menuOpen()
+  
+  &_expanded
+    border-bottom 1px solid rgba(255, 255, 255, 0.2)
+    .header-menu__logo
+      text-shadow 1px 1px colorBlack
+    .navlist
+      &__subscribeButton
+        color colorWhite
+        border-color rgba(255, 255, 255, 0.6)
+        &:hover, &:focus
+          background-color hsla(0,0%,100%,.1)
+          border-color hsla(0,0%,100%,.38)
+      li .link
+        color colorWhite
+        &:hover, &:focus
+          color hsla(0,0%,100%,.6)
   

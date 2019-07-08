@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import HeaderMenu from './components/header-menu';
 import HeaderBackgrounds from './components/header-backgrounds';
@@ -8,27 +9,32 @@ import './style.styl';
 
 const Header = ({
   children, backgroundUrls, onScrollButtonClick, ...menuOptions
-}) => (
-  <header className="header">
-    <HeaderBackgrounds backgroundUrls={backgroundUrls} />
-    <div className="header__content">
-      <div className="header__menuHolder">
-        <HeaderMenu {...menuOptions} />
+}) => {
+  const isExpanded = !!backgroundUrls.length;
+  return (
+    <header className={classnames('header', { header_isExpanded: isExpanded })}>
+      <HeaderBackgrounds backgroundUrls={backgroundUrls} />
+      <div className="header__content">
+        <div className="header__menuHolder">
+          <HeaderMenu {...menuOptions} isExpanded={isExpanded} />
+        </div>
+        {children}
+        {isExpanded && <EButton className="header__scrolldown" onClick={onScrollButtonClick} />}
       </div>
-      {children}
-      <EButton className="header__scrolldown" onClick={onScrollButtonClick} />
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 Header.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   backgroundUrls: PropTypes.arrayOf(PropTypes.string),
-  onScrollButtonClick: PropTypes.func.isRequired,
+  onScrollButtonClick: PropTypes.func,
 };
 
 Header.defaultProps = {
+  children: null,
   backgroundUrls: [],
+  onScrollButtonClick: () => {},
 };
 
 export default Header;
