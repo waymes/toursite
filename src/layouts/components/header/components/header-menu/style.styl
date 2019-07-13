@@ -15,12 +15,16 @@ menuOpen()
     &__subscribeButton
       margin-top 15px
       text-align center
+      color colorLight
+      &:hover, &:focus
+        background-color transparent
     li
       display block
       margin 0
     .link
       padding 15px 0
       display block
+      color colorLight
 
 .header-menu
   display flex
@@ -97,7 +101,7 @@ menuOpen()
       right 0
       height 2px
       width 100%
-      background-color colorWhite
+      background-color colorDark
       transition all .2s
       &:nth-child(2)
         top 8px
@@ -107,6 +111,7 @@ menuOpen()
         width 60%
     &_active
       span
+        background-color colorWhite
         &:first-child
           top 8px
           right -4px
@@ -125,8 +130,12 @@ menuOpen()
   
   &_expanded
     border-bottom 1px solid rgba(255, 255, 255, 0.2)
-    .header-menu__logo
-      text-shadow 1px 1px colorBlack
+    .header-menu
+      &__logo
+        text-shadow 1px 1px colorBlack
+      &__burger
+        span
+          background-color: colorWhite
     .navlist
       &__subscribeButton
         color colorWhite
