@@ -7,7 +7,7 @@ const AboutPage = () => (
   <GeneralLayout title="О нас" className="aboutPage container">
     <Section>
       <div className="aboutPage__teamInfo">
-        <img src="/static/about_text_banner.jpg" alt="Map" />
+        <img src="/static/about/banner.jpg" alt="Map" />
         <h2>
           <span className="underscore">TripAdventure</span>
           {' '}
@@ -43,7 +43,7 @@ const AboutPage = () => (
     </Section>
     <Section>
       <div className="aboutPage__guideInfo">
-        <img src="/static/tour/tour_picture_3.jpg" alt="Alex Zhossan" />
+        <img src="/static/about/zhossan.jpg" alt="Alex Zhossan" />
         <h2>
           <span className="underscore">Алексей Жоссан</span>
           {' '}
@@ -58,7 +58,7 @@ const AboutPage = () => (
         </p>
       </div>
       <div className="aboutPage__guideInfo">
-        <img src="/static/tour/tour_picture_3.jpg" alt="Alex Zhossan" />
+        <img src="/static/about/stavros.jpg" alt="Alex Zhossan" />
         <h2>
           <span className="underscore">Евгений Ставрос</span>
           {' '}
