@@ -41,7 +41,7 @@ const TripSlider = ({
       <EButton className="tour-slide" key={trip.id}>
         <div
           className="tour-slide__inner"
-          style={{ backgroundImage: `url(${trip.image})` }}
+          style={{ backgroundImage: `url(${trip.backgroundImage})` }}
         >
           <div className="tour-slide__content">
             <EButton

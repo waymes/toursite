@@ -62,28 +62,36 @@ class TripPage extends React.Component {
     );
   }
 
+  renderText(text) {
+    return (
+      <div key={text} className="textBlock">
+        <p className="textBlock__details">{text}</p>
+      </div>
+    );
+  }
+
   render() {
     const { selectedTrip } = this.props;
 
     if (!selectedTrip) return <Error statusCode={404} />;
 
     const headerProps = {
-      backgroundUrls: [selectedTrip.image],
+      backgroundUrls: [selectedTrip.backgroundImage],
       onScrollButtonClick: this.scrollToFacts,
       children: this.renderHeaderChildren(),
     };
     return (
       <GeneralLayout title="Тур в Иран" className="tourpage container" headerProps={headerProps}>
         <Section className="tourpage__section tourpage__section_1" ref={this.factsRef}>
-          <Title>{selectedTrip.firstBlockTitle}</Title>
+          <Title>{selectedTrip.blockTitle1}</Title>
           <div className="tourpage__firstBlockItems">
-            {selectedTrip.firstBlockItems.map(this.renderTextBlock)}
+            {selectedTrip.blockItems1.map(this.renderTextBlock)}
           </div>
         </Section>
         <Section className="tourpage__section tourpage__section_2">
-          <Title>{selectedTrip.secondBlockTitle}</Title>
+          <Title>{selectedTrip.blockTitle2}</Title>
           <div className="tourpage__secondBlockItems">
-            {selectedTrip.secondBlockItems.map(item => (
+            {selectedTrip.blockItems2.map(item => (
               <div className="imageFact" key={item.image} style={{ backgroundImage: `url(${item.image})` }}>
                 <div className="imageFact__details">{item.text}</div>
               </div>
@@ -91,32 +99,28 @@ class TripPage extends React.Component {
           </div>
         </Section>
         <Section className="tourpage__section tourpage__section_3">
-          <Title>{selectedTrip.thirdBlockTitle}</Title>
+          <Title>{selectedTrip.blockTitle3}</Title>
           <div className="tourpage__thirdBlockItems">
-            {selectedTrip.thirdBlockItems.map(this.renderTextBlock)}
+            {selectedTrip.blockItems3.map(this.renderText)}
           </div>
         </Section>
         <Section className="tourpage__section tourpage__section_5">
-          <Title>{selectedTrip.fourthBlockTitle}</Title>
-          <Gallery images={selectedTrip.fourthBlockItems} />
+          <Title>{selectedTrip.blockTitle4}</Title>
+          <Gallery images={selectedTrip.blockItems4} />
         </Section>
         <Section className="tourpage__section tourpage__section_5">
-          <Title>{selectedTrip.fifthBlockTitle}</Title>
+          <Title>{selectedTrip.blockTitle5}</Title>
           <div className="tourpage__fifthBlockItems">
-            {selectedTrip.fifthBlockItems.map(item => (
-              <div className="fact" key={item.title}>
-                <div className="fact__head">
-                  <i className={item.icon} />
-                  <h3 className="fact__title">{item.title}</h3>
-                </div>
-                <p className="fact__description">{item.details}</p>
+            {selectedTrip.includedList.map(item => (
+              <div className="fact" key={item}>
+                <p className="fact__description">{item}</p>
               </div>
             ))}
           </div>
           <Title>{`Стоимость: ${selectedTrip.price} $`}</Title>
           <Title secondary>Дополнительные расходы:</Title>
           <div className="tourpage__additionalExpenses">
-            {selectedTrip.additionalExpenses.map(this.renderTextBlock)}
+            {selectedTrip.additionalList.map(this.renderText)}
           </div>
           <Button onClick={openRegisterToTripModal}>Подать заявку</Button>
           <Link href="/countries"><Button>Узнать больше о стране</Button></Link>
