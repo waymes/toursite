@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Slider from 'react-slick';
 
+import ElementButton from '../../../../components/common/element-button';
 import { factList } from '../../constants';
 
 import './style.styl';
@@ -15,13 +16,14 @@ class Atlas extends Component {
     return (
       <div className="atlas__hovers">
         {factList.map((fact, id) => (
-          <div
+          <ElementButton
             className="atlas__hoverItem"
+            onMouseEnter={() => this.sliderRef.current.slickGoTo(id)}
             onClick={() => this.sliderRef.current.slickGoTo(id)}
-            key={id}
+            key={fact.title}
           >
             <span>{id + 1}</span>
-          </div>
+          </ElementButton>
         ))}
         <div className="atlas__hoverItem" />
       </div>
@@ -35,7 +37,7 @@ class Atlas extends Component {
         <div className="atlas__facts">
           <Slider autoplay arrows={false} ref={this.sliderRef}>
             {factList.map((fact, id) => (
-              <div className="fact" key={id}>
+              <div className="fact" key={fact.title}>
                 <h3>
                   {id + 1}
                   {'. '}

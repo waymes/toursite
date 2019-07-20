@@ -2,6 +2,10 @@
 
 .tourpage
   padding 0 15px
+
+  p
+    font-size fontSizeM
+    line-height 1.5
   &__header
     text-align center
     padding 35px 15px 0
@@ -92,39 +96,18 @@
             border-left borderBlack 
             border-bottom borderBlack
             transform rotate(-45deg)
-          &__title
+          &__details
             margin-top 0
     &_5
-      .tourpage__fifthBlockItems
-        display grid 
-        grid-template-columns repeat(1, 1fr)
-        grid-gap 15px
-        grid-auto-rows minmax(100px, auto)
-        @media screen and (min-width mediumWidth)
-          grid-template-columns repeat(2, 1fr)
-        @media screen and (min-width largeWidth)
-          grid-template-columns repeat(3, 1fr)
-        .fact
-          &__head
-            display flex
-            align-items center
-          &__title
-            margin 0 0 0 15px
-      .tourpage__additionalExpenses
-        display grid 
-        grid-template-columns repeat(1, 1fr)
-        grid-gap 15px
-        grid-auto-rows minmax(100px, auto)
-        @media screen and (min-width smallWidth)
-          grid-template-columns repeat(2, 1fr)
-          .textBlock
-            max-width 450px
-        .textBlock
-          width: 100%
-          &:nth-child(odd)
-            margin-left auto
-          &__title
-            margin-top 0
       .button
-        margin 7vh auto 0
+        margin 5vh auto 0
         display block
+        width 250px
+      .tourpage__description
+        max-width largeWidth
+        margin 6vh auto 8vh
+        text-align: center
+    &_6
+      .guideInfo
+        max-width largeWidth
+        margin 0 auto

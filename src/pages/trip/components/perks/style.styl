@@ -1,0 +1,28 @@
+@import '../../../../styles/variables.styl'
+
+.perks
+  display grid 
+  grid-template-columns repeat(1, 1fr)
+  grid-gap 15px
+  grid-auto-rows minmax(100px, auto)
+  @media screen and (min-width mediumWidth)
+    grid-template-columns repeat(2, 1fr)
+  .title
+    margin-top 0
+    text-align: left
+  .perks__includedList
+    margin-bottom 7vh
+    @media screen and (min-width mediumWidth)
+      margin-bottom 0
+    .perk i
+      color colorGreen
+  .perk
+    display flex
+    margin-bottom 25px
+    i
+      font-size 21px
+      margin-top 3px
+      color colorLight
+    p
+      font-size fontSizeM
+      margin 0 0 0 15px

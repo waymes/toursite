@@ -3,6 +3,7 @@
 .aboutPage
   padding 0 15px
   max-width largeWidth
+  font-size fontSizeM
   &__teamInfo
     margin-top 5vh
     margin-bottom 0
@@ -12,26 +13,19 @@
       margin-bottom 0
     img 
       float right
-      width 270px
+      width 300px
       padding-left 15px
       padding-bottom 15px
       display none
       @media screen and (min-width mediumWidth)
         display block
-  &__guideInfo
-    margin-top 9vh
-    overflow auto
-    h2
-      margin-top 0
-    img 
-      float left
-      width 270px
-      height auto
-      padding-right 15px
-      padding-bottom 15px
   
   h2
     font-size 22px
     .underscore
       text-decoration: underline
       white-space: nowrap
+
+  .guideInfo
+    &__title
+      font-size 22px

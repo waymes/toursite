@@ -28,40 +28,47 @@ const chooseSlidesAmount = ({ isMobile, isTablet, isDesktop }) => {
 
 const TripSlider = ({
   isMobile, isTablet, isDesktop, tripList,
-}) => (
-  <Slider
-    arrows
-    speed={500}
-    autoplay
-    slidesToShow={chooseSlidesAmount({ isMobile, isTablet, isDesktop })}
-    slidesToScroll={chooseSlidesAmount({ isMobile, isTablet, isDesktop })}
-    className="tour-slider"
-  >
-    {tripList.map(trip => (
-      <EButton className="tour-slide" key={trip.id}>
-        <div
-          className="tour-slide__inner"
-          style={{ backgroundImage: `url(${trip.backgroundImage})` }}
+}) => {
+  let slidesAmount = chooseSlidesAmount({ isMobile, isTablet, isDesktop });
+  if (tripList.length < slidesAmount) {
+    slidesAmount = tripList.length;
+  }
+  return (
+    <Slider
+      arrows
+      speed={500}
+      autoplay
+      slidesToShow={slidesAmount}
+      slidesToScroll={slidesAmount}
+      className="tour-slider"
+    >
+      {tripList.map(trip => (
+        <EButton
+          className="tour-slide"
+          key={trip.id}
+          onClick={() => Router.push(`/trip?id=${trip.id}`, `/trip/${trip.id}`)}
         >
-          <div className="tour-slide__content">
-            <EButton
-              className="tour-slide__title"
-              onClick={() => Router.push(`/trip?id=${trip.id}`, `/trip/${trip.id}`)}
-            >
-              {trip.destination}
-            </EButton>
-            <div className="tour-slide__description">
-              {'Даты: '}
-              {moment(trip.dateFrom).format('DD.MM')}
-              {' ‒ '}
-              {moment(trip.dateTo).format('DD.MM')}
+          <div
+            className="tour-slide__inner"
+            style={{ backgroundImage: `url(${trip.backgroundImage})` }}
+          >
+            <div className="tour-slide__content">
+              <div className="tour-slide__title">
+                {trip.destination}
+              </div>
+              <div className="tour-slide__description">
+                {'Даты: '}
+                {moment(trip.dateFrom).format('DD.MM')}
+                {' ‒ '}
+                {moment(trip.dateTo).format('DD.MM')}
+              </div>
             </div>
           </div>
-        </div>
-      </EButton>
-    ))}
-  </Slider>
-);
+        </EButton>
+      ))}
+    </Slider>
+  );
+};
 
 TripSlider.propTypes = {
   tripList: PropTypes.arrayOf(tripPropType).isRequired,

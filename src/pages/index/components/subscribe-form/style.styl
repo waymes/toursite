@@ -4,13 +4,15 @@
   display flex
   justify-content center
   flex-wrap wrap
+  .input, .input input
+    min-width 250px
   .input, .button
-    margin 30px 0
+    margin 30px 0 0
     width 100%
     max-width 500px
     &:last-child
       margin-bottom 0
     @media screen and (min-width mediumWidth) {
       width max-content
-      margin 30px 15px 0
+      margin 0 15px
     }

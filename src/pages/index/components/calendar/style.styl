@@ -2,7 +2,7 @@
 
 .calendar-table
   margin 0 auto
-  font-size fontSizeXS
+  font-size fontSizeS
   border-collapse collapse
   &__holder
     max-width 100%
@@ -10,9 +10,10 @@
   &__head
     th
       text-align left
-      padding 10px 15px
+      padding 15px
       color colorDark
       font-weight normal
+      white-space nowrap
       &:last-child
         text-align right
   &__row
@@ -23,9 +24,10 @@
     td
       border-top borderLighter
       text-align right
-      padding 10px 15px
+      padding 15px
       max-width 250px
       min-width 110px
+      white-space nowrap
       &:first-child, &:nth-child(2)
         text-align left
       .link

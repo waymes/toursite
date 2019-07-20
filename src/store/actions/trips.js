@@ -30,8 +30,16 @@ export const closeRegisterToTripModal = () => {
 
 export const registerToTrip = async (values) => {
   try {
-    await request('/trips/request', { method: 'POST', body: values })
+    await request('/trips/request', { method: 'POST', body: values });
   } catch (error) {
     console.log(error);
   }
-}
+};
+
+export const subscribeToTrip = async (values) => {
+  try {
+    await request('/trips/subscribe', { method: 'POST', body: values });
+  } catch (error) {
+    console.log(error);
+  }
+};

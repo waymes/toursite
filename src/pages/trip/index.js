@@ -9,6 +9,8 @@ import Button from '../../components/common/button';
 import Link from '../../components/common/link';
 import RegisterToTripModal from './components/register-to-trip-modal';
 import Gallery from './components/gallery';
+import Perks from './components/perks';
+import GuideInfo from '../../components/common/guide-info';
 
 import { fetchTrip, openRegisterToTripModal } from '../../store/actions/trips';
 import { selectedTripSelector } from '../../store/selectors/trips';
@@ -53,23 +55,6 @@ class TripPage extends React.Component {
     );
   }
 
-  renderTextBlock({ title, details }) {
-    return (
-      <div key={title} className="textBlock">
-        <h3 className="textBlock__title">{title}</h3>
-        <p className="textBlock__details">{details}</p>
-      </div>
-    );
-  }
-
-  renderText(text) {
-    return (
-      <div key={text} className="textBlock">
-        <p className="textBlock__details">{text}</p>
-      </div>
-    );
-  }
-
   render() {
     const { selectedTrip } = this.props;
 
@@ -85,7 +70,12 @@ class TripPage extends React.Component {
         <Section className="tourpage__section tourpage__section_1" ref={this.factsRef}>
           <Title>{selectedTrip.blockTitle1}</Title>
           <div className="tourpage__firstBlockItems">
-            {selectedTrip.blockItems1.map(this.renderTextBlock)}
+            {selectedTrip.blockItems1.map(({ title, details }) => (
+              <div key={title} className="textBlock">
+                <h3>{title}</h3>
+                <p className="textBlock__details">{details}</p>
+              </div>
+            ))}
           </div>
         </Section>
         <Section className="tourpage__section tourpage__section_2">
@@ -101,7 +91,11 @@ class TripPage extends React.Component {
         <Section className="tourpage__section tourpage__section_3">
           <Title>{selectedTrip.blockTitle3}</Title>
           <div className="tourpage__thirdBlockItems">
-            {selectedTrip.blockItems3.map(this.renderText)}
+            {selectedTrip.blockItems3.map(text => (
+              <div key={text} className="textBlock">
+                <p className="textBlock__details" dangerouslySetInnerHTML={{ __html: text }} />
+              </div>
+            ))}
           </div>
         </Section>
         <Section className="tourpage__section tourpage__section_5">
@@ -109,21 +103,28 @@ class TripPage extends React.Component {
           <Gallery images={selectedTrip.blockItems4} />
         </Section>
         <Section className="tourpage__section tourpage__section_5">
-          <Title>{selectedTrip.blockTitle5}</Title>
-          <div className="tourpage__fifthBlockItems">
-            {selectedTrip.includedList.map(item => (
-              <div className="fact" key={item}>
-                <p className="fact__description">{item}</p>
-              </div>
-            ))}
-          </div>
           <Title>{`Стоимость: ${selectedTrip.price} $`}</Title>
-          <Title secondary>Дополнительные расходы:</Title>
-          <div className="tourpage__additionalExpenses">
-            {selectedTrip.additionalList.map(this.renderText)}
-          </div>
+          <Perks
+            includedList={selectedTrip.includedList}
+            additionalList={selectedTrip.additionalList}
+          />
+          <p className="tourpage__description">{selectedTrip.description}</p>
           <Button onClick={openRegisterToTripModal}>Подать заявку</Button>
-          <Link href="/countries"><Button>Узнать больше о стране</Button></Link>
+          <Link href="/countries"><Button color="secondary">Узнать больше о стране</Button></Link>
+        </Section>
+        <Section className="tourpage__section tourpage__section_6">
+          <Title>Путешествие проведёт</Title>
+          <GuideInfo
+            guide={{
+              avatar: '/static/about/zhossan.jpg',
+              name: 'Алексей Жоссан',
+              shortDescription: 'составитель маршрутов, эксперт нестандартных путешествий и организатор поездок.',
+              fullDescription: `Побывал в 40 странах, из них 30 проехал автостопом. Знает, как добраться из 
+                Куала-Лумпура в Киев за 10$ и найти необычные и захватывающие места в любой стране.
+                Увлечения: астрономия, античная история, велоспорт, авторалли, urban exploration,
+                видеосъемка.`,
+            }}
+          />
         </Section>
         <RegisterToTripModal />
       </GeneralLayout>
