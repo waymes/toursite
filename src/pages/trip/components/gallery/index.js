@@ -6,7 +6,6 @@ import './style.styl';
 const Gallery = ({ images }) => (
   <div className="gallery">
     <Slider
-      dots
       infinite
       arrows
       speed={500}

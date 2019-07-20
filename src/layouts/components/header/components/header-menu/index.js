@@ -82,6 +82,7 @@ class HeaderMenu extends Component {
           <EButton
             className={classnames('header-menu__burger', { 'header-menu__burger_active': isBurgerActive })}
             onClick={this.toggleBurger}
+            areaLabel="Burger"
           >
             <span />
             <span />

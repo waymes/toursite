@@ -9,11 +9,12 @@ import scrollToTop from '../hocs/scroll-to-top';
 import '../../styles/main.styl';
 
 const GeneralLayout = ({
-  children, className, title, headerProps,
+  children, className, title, headerProps, meta,
 }) => (
   <div className="generalLayout">
     <Head>
       <title>{title}</title>
+      <meta name="description" content={meta} />
       <link
         rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -35,12 +36,14 @@ GeneralLayout.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   headerProps: PropTypes.shape({}),
+  meta: PropTypes.string,
 };
 
 GeneralLayout.defaultProps = {
   className: '',
   title: 'TripAdventure',
   headerProps: {},
+  meta: 'Приключенческая команда, которая занимается организацией нестандартных путешествий в необычные места с 2014 года.',
 };
 
 export default scrollToTop(GeneralLayout);

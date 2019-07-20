@@ -19,7 +19,7 @@ const Header = ({
           <HeaderMenu {...menuOptions} isExpanded={isExpanded} />
         </div>
         {children}
-        {isExpanded && <EButton className="header__scrolldown" onClick={onScrollButtonClick} />}
+        {isExpanded && <EButton areaLabel="Scrolldown" className="header__scrolldown" onClick={onScrollButtonClick} />}
       </div>
     </header>
   );

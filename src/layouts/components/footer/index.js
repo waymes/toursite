@@ -15,10 +15,10 @@ const Footer = () => (
         </ul>
       </div>
       <div className="footer__contactInfo">
-        <Link href="https://www.facebook.com/alex.zhossan" blank>
+        <Link href="https://www.facebook.com/alex.zhossan" blank areaLabel="Read more on our facebook page">
           <i className="fab fa-facebook-f" />
         </Link>
-        <Link href="https://www.instagram.com/lifetripadventure/" blank>
+        <Link href="https://www.instagram.com/lifetripadventure/" blank areaLabel="Check more on our instagram profile">
           <i className="fab fa-instagram" />
         </Link>
         <Link href="tel:380937625988">

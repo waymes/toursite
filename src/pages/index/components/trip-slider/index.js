@@ -44,6 +44,7 @@ const TripSlider = ({
     >
       {tripList.map(trip => (
         <EButton
+          areaLabel={trip.name}
           className="tour-slide"
           key={trip.id}
           onClick={() => Router.push(`/trip?id=${trip.id}`, `/trip/${trip.id}`)}

@@ -66,7 +66,12 @@ class TripPage extends React.Component {
       children: this.renderHeaderChildren(),
     };
     return (
-      <GeneralLayout title={selectedTrip.name} className="tourpage container" headerProps={headerProps}>
+      <GeneralLayout
+        title={selectedTrip.name}
+        className="tourpage container"
+        headerProps={headerProps}
+        meta={selectedTrip.description}
+      >
         <Section className="tourpage__section tourpage__section_1" ref={this.factsRef}>
           <Title>{selectedTrip.blockTitle1}</Title>
           <div className="tourpage__firstBlockItems">
