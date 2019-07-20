@@ -66,7 +66,7 @@ class TripPage extends React.Component {
       children: this.renderHeaderChildren(),
     };
     return (
-      <GeneralLayout title="Тур в Иран" className="tourpage container" headerProps={headerProps}>
+      <GeneralLayout title={selectedTrip.name} className="tourpage container" headerProps={headerProps}>
         <Section className="tourpage__section tourpage__section_1" ref={this.factsRef}>
           <Title>{selectedTrip.blockTitle1}</Title>
           <div className="tourpage__firstBlockItems">
@@ -83,7 +83,9 @@ class TripPage extends React.Component {
           <div className="tourpage__secondBlockItems">
             {selectedTrip.blockItems2.map(item => (
               <div className="imageFact" key={item.image} style={{ backgroundImage: `url(${item.image})` }}>
-                <div className="imageFact__details">{item.text}</div>
+                <div className="imageFact__details">
+                  <span>{item.text}</span>
+                </div>
               </div>
             ))}
           </div>
