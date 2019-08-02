@@ -8,7 +8,7 @@ const Perks = ({ includedList, additionalList }) => (
   <div className="perks">
     <div className="perks__includedList">
       <Title>В стоимость включены:</Title>
-      {includedList.map(text => (
+      {includedList.map(({ text }) => (
         <div key={text} className="perk">
           <i className="fas fa-check" />
           <p className="perk__details">{text}</p>
@@ -17,7 +17,7 @@ const Perks = ({ includedList, additionalList }) => (
     </div>
     <div className="perks__additionalList">
       <Title>Дополнительно:</Title>
-      {additionalList.map(text => (
+      {additionalList.map(({ text }) => (
         <div key={text} className="perk">
           <i className="fas fa-plus" />
           <p className="perk__details">{text}</p>

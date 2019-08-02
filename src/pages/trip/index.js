@@ -75,10 +75,10 @@ class TripPage extends React.Component {
         <Section className="tourpage__section tourpage__section_1" ref={this.factsRef}>
           <Title>{selectedTrip.blockTitle1}</Title>
           <div className="tourpage__firstBlockItems">
-            {selectedTrip.blockItems1.map(({ title, details }) => (
+            {selectedTrip.blockItems1.map(({ title, text }) => (
               <div key={title} className="textBlock">
                 <h3>{title}</h3>
-                <p className="textBlock__details">{details}</p>
+                <p className="textBlock__details">{text}</p>
               </div>
             ))}
           </div>
@@ -98,7 +98,7 @@ class TripPage extends React.Component {
         <Section className="tourpage__section tourpage__section_3">
           <Title>{selectedTrip.blockTitle3}</Title>
           <div className="tourpage__thirdBlockItems">
-            {selectedTrip.blockItems3.map(text => (
+            {selectedTrip.blockItems3.map(({ text }) => (
               <div key={text} className="textBlock">
                 <p className="textBlock__details" dangerouslySetInnerHTML={{ __html: text }} />
               </div>
