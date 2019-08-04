@@ -12,9 +12,12 @@ app
     const server = express();
 
     server.get('/trip/:id', (req, res) => {
-      const actualPage = '/trip';
       const query = { id: req.params.id };
-      app.render(req, res, actualPage, query);
+      app.render(req, res, '/trip', query);
+    });
+    server.get('/articles/:id', (req, res) => {
+      const query = { id: req.params.id };
+      app.render(req, res, '/article', query);
     });
 
     server.get('*', (req, res) => handle(req, res));

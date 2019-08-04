@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import Title from '../../../../components/common/title';
+import Title from '../../../../components/title';
 
 import './style.styl';
 

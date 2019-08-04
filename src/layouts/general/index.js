@@ -13,7 +13,7 @@ const GeneralLayout = ({
 }) => (
   <div className="generalLayout">
     <Head>
-      <title>{title}</title>
+      <title>{title ? `${title} – TripAdventure` : 'TripAdventure'}</title>
       <meta name="description" content={meta} />
       <link
         rel="stylesheet"
@@ -41,7 +41,7 @@ GeneralLayout.propTypes = {
 
 GeneralLayout.defaultProps = {
   className: '',
-  title: 'TripAdventure',
+  title: '',
   headerProps: {},
   meta: 'Приключенческая команда, которая занимается организацией нестандартных путешествий в необычные места с 2014 года.',
 };

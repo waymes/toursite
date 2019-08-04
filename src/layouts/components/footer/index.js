@@ -1,4 +1,4 @@
-import Link from '../../../components/common/link';
+import Link from '../../../components/link';
 
 import './style.styl';
 
@@ -15,10 +15,10 @@ const Footer = () => (
         </ul>
       </div>
       <div className="footer__contactInfo">
-        <Link href="https://www.facebook.com/alex.zhossan" blank areaLabel="Read more on our facebook page">
+        <Link href="https://www.facebook.com/alex.zhossan" blank area-label="Read more on our facebook page">
           <i className="fab fa-facebook-f" />
         </Link>
-        <Link href="https://www.instagram.com/lifetripadventure/" blank areaLabel="Check more on our instagram profile">
+        <Link href="https://www.instagram.com/lifetripadventure/" blank area-label="Check more on our instagram profile">
           <i className="fab fa-instagram" />
         </Link>
         <Link href="tel:380937625988">

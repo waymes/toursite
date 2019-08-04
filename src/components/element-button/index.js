@@ -9,6 +9,7 @@ const ElementButton = ({
     onKeyPress={e => e.key === 'Enter' && onClick()}
     role="button"
     tabIndex={0}
+    style={{ outline: 'none' }}
     {...other}
   >
     {children}

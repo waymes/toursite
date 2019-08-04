@@ -3,14 +3,14 @@ import Error from 'next/error';
 import moment from 'moment';
 
 import GeneralLayout from '../../layouts/general';
-import Title from '../../components/common/title';
-import Section from '../../components/common/section';
-import Button from '../../components/common/button';
-import Link from '../../components/common/link';
+import Title from '../../components/title';
+import Section from '../../components/section';
+import Button from '../../components/button';
+import Link from '../../components/link';
 import RegisterToTripModal from './components/register-to-trip-modal';
 import Gallery from './components/gallery';
 import Perks from './components/perks';
-import GuideInfo from '../../components/common/guide-info';
+import ShortInfo from '../../components/short-info';
 
 import { fetchTrip, openRegisterToTripModal } from '../../store/actions/trips';
 import { selectedTripSelector } from '../../store/selectors/trips';
@@ -117,21 +117,25 @@ class TripPage extends React.Component {
           />
           <p className="tourpage__description">{selectedTrip.description}</p>
           <Button onClick={openRegisterToTripModal}>Подать заявку</Button>
-          <Link href="/countries"><Button color="secondary">Узнать больше о стране</Button></Link>
+          <Link href="/articles"><Button color="secondary">Узнать больше о стране</Button></Link>
         </Section>
         <Section className="tourpage__section tourpage__section_6">
           <Title>Путешествие проведёт</Title>
-          <GuideInfo
-            guide={{
-              avatar: '/static/about/zhossan.jpg',
-              name: 'Алексей Жоссан',
-              shortDescription: 'составитель маршрутов, эксперт нестандартных путешествий и организатор поездок.',
-              fullDescription: `Побывал в 40 странах, из них 30 проехал автостопом. Знает, как добраться из 
-                Куала-Лумпура в Киев за 10$ и найти необычные и захватывающие места в любой стране.
-                Увлечения: астрономия, античная история, велоспорт, авторалли, urban exploration,
-                видеосъемка.`,
-            }}
-          />
+          <ShortInfo
+            img="/static/about/zhossan.jpg"
+            title={(
+              <span>
+                <span className="underscore">Алексей Жоссан</span>
+                &nbsp;– составитель маршрутов, эксперт нестандартных путешествий и
+                организатор поездок.
+              </span>
+            )}
+          >
+            Побывал в 40 странах, из них 30 проехал автостопом. Знает, как добраться из
+            Куала-Лумпура в Киев за 10$ и найти необычные и захватывающие места в любой стране.
+            Увлечения: астрономия, античная история, велоспорт, авторалли, urban exploration,
+            видеосъемка.
+          </ShortInfo>
         </Section>
         <RegisterToTripModal />
       </GeneralLayout>

@@ -7,5 +7,5 @@ export const tripPropType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   updatedAt: PropTypes.string,
-  image: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
 });

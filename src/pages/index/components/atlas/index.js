@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Slider from 'react-slick';
 
-import ElementButton from '../../../../components/common/element-button';
+import ElementButton from '../../../../components/element-button';
 import { factList } from '../../constants';
 
 import './style.styl';
@@ -20,7 +20,7 @@ class Atlas extends Component {
             className="atlas__hoverItem"
             onMouseEnter={() => this.sliderRef.current.slickGoTo(id)}
             onClick={() => this.sliderRef.current.slickGoTo(id)}
-            key={fact.title}
+            key={fact.text}
           >
             <span>{id + 1}</span>
           </ElementButton>
@@ -37,13 +37,10 @@ class Atlas extends Component {
         <div className="atlas__facts">
           <Slider autoplay arrows={false} ref={this.sliderRef}>
             {factList.map((fact, id) => (
-              <div className="fact" key={fact.title}>
-                <h3>
-                  {id + 1}
-                  {'. '}
-                  {fact.title}
-                </h3>
-                <p>{fact.details}</p>
+              <div className="fact" key={fact.text}>
+                {id + 1}
+                {'. '}
+                {fact.text}
               </div>
             ))}
           </Slider>

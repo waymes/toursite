@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import Router from 'next/router';
 import moment from 'moment';
 
-import EButton from '../../../../components/common/element-button';
+import EButton from '../../../../components/element-button';
 
 import withSizes from '../../../../helpers/sizes';
 
@@ -44,7 +44,7 @@ const TripSlider = ({
     >
       {tripList.map(trip => (
         <EButton
-          areaLabel={trip.name}
+          area-label={trip.name}
           className="tour-slide"
           key={trip.id}
           onClick={() => Router.push(`/trip?id=${trip.id}`, `/trip/${trip.id}`)}

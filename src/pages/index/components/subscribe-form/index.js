@@ -1,7 +1,7 @@
 import { Form } from 'react-final-form';
 
-import Input from '../../../../components/common/input';
-import Button from '../../../../components/common/button';
+import Input from '../../../../components/input';
+import Button from '../../../../components/button';
 
 import { subscribeToTrip } from '../../../../store/actions/trips';
 

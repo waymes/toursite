@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import HeaderMenu from './components/header-menu';
 import HeaderBackgrounds from './components/header-backgrounds';
-import EButton from '../../../components/common/element-button';
+import EButton from '../../../components/element-button';
 
 import './style.styl';
 
@@ -19,7 +19,7 @@ const Header = ({
           <HeaderMenu {...menuOptions} isExpanded={isExpanded} />
         </div>
         {children}
-        {isExpanded && <EButton areaLabel="Scrolldown" className="header__scrolldown" onClick={onScrollButtonClick} />}
+        {isExpanded && <EButton area-label="Scrolldown" className="header__scrolldown" onClick={onScrollButtonClick} />}
       </div>
     </header>
   );

@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import { Form } from 'react-final-form';
 
-import Modal from '../../../../components/common/modal';
-import Input from '../../../../components/common/input';
-import Textarea from '../../../../components/common/textarea';
-import Button from '../../../../components/common/button';
+import Modal from '../../../../components/modal';
+import Input from '../../../../components/input';
+import Textarea from '../../../../components/textarea';
+import Button from '../../../../components/button';
 
 import { closeRegisterToTripModal, registerToTrip } from '../../../../store/actions/trips';
 import { isRegisterToTripModalOpenSelector } from '../../../../store/selectors/trips';

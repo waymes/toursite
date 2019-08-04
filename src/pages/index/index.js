@@ -4,8 +4,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import GeneralLayout from '../../layouts/general';
-import Title from '../../components/common/title';
-import Section from '../../components/common/section';
+import Title from '../../components/title';
+import Section from '../../components/section';
 import TripSlider from './components/trip-slider';
 import Atlas from './components/atlas';
 import Calendar from './components/calendar';
@@ -32,12 +32,15 @@ class Home extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { router } = this.props;
+    const { router, tripList } = this.props;
 
     const { target } = router.query;
     if (target) {
       const ref = this[`${target}Ref`];
       this.scrollIntoView(ref && ref.current);
+    }
+    if (!tripList) {
+      fetchTrips();
     }
   }
 

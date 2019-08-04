@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import classnames from 'classnames';
 
-import Link from '../../../../../components/common/link';
-import EButton from '../../../../../components/common/element-button';
+import Link from '../../../../../components/link';
+import EButton from '../../../../../components/element-button';
 
 import withSizes from '../../../../../helpers/sizes';
 
@@ -82,7 +82,7 @@ class HeaderMenu extends Component {
           <EButton
             className={classnames('header-menu__burger', { 'header-menu__burger_active': isBurgerActive })}
             onClick={this.toggleBurger}
-            areaLabel="Burger"
+            area-label="Burger"
           >
             <span />
             <span />

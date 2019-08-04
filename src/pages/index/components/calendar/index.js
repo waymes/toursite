@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import Link from '../../../../components/common/link';
+import Link from '../../../../components/link';
 
 import withSizes from '../../../../helpers/sizes';
 import { tripPropType } from '../../../../prop-types/trips';
