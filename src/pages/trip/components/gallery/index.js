@@ -22,7 +22,9 @@ const Gallery = ({ images }) => (
 );
 
 Gallery.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string),
+  images: PropTypes.arrayOf(PropTypes.shape({
+    image: PropTypes.string,
+  })),
 };
 
 Gallery.defaultProps = {

@@ -28,8 +28,8 @@ const Perks = ({ includedList, additionalList }) => (
 );
 
 Perks.propTypes = {
-  includedList: PropTypes.arrayOf(PropTypes.string),
-  additionalList: PropTypes.arrayOf(PropTypes.string),
+  includedList: PropTypes.arrayOf(PropTypes.shape()),
+  additionalList: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 Perks.defaultProps = {

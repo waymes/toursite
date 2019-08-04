@@ -15,7 +15,7 @@ app
       const query = { id: req.params.id };
       app.render(req, res, '/trip', query);
     });
-    server.get('/articles/:id', (req, res) => {
+    server.get('/article/:id', (req, res) => {
       const query = { id: req.params.id };
       app.render(req, res, '/article', query);
     });

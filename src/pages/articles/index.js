@@ -12,7 +12,7 @@ export default () => (
       <ShortInfo
         img="/static/articles/iran/photo-1.jpg"
         title="Почему нужно ехать в Иран?"
-        onClick={() => Router.push('/articles?id=1', '/articles/1')}
+        onClick={() => Router.push('/article?id=1', '/article/1')}
         className="pointer"
       >
         Иран - одна из самых волшебных и недооцененных стран на нашей планете!
