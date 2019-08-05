@@ -13,7 +13,7 @@ const GeneralLayout = ({
 }) => (
   <div className="generalLayout">
     <Head>
-      <title>{title ? `${title} – TripAdventure` : 'TripAdventure'}</title>
+      <title>{title ? `${title} | TripAdventure` : 'TripAdventure'}</title>
       <meta name="description" content={meta} />
       <link
         rel="stylesheet"

@@ -117,7 +117,7 @@ class TripPage extends React.Component {
           />
           <p className="tourpage__description">{selectedTrip.description}</p>
           <Button onClick={openRegisterToTripModal}>Подать заявку</Button>
-          <Link href="/articles"><Button color="secondary">Узнать больше о стране</Button></Link>
+          <Link href={`/article?id=${selectedTrip.id}`} as={`/article/${selectedTrip.id}`}><Button color="secondary">Узнать больше о стране</Button></Link>
         </Section>
         <Section className="tourpage__section tourpage__section_6">
           <Title>Путешествие проведёт</Title>
